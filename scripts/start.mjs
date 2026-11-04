@@ -1,3 +1,5 @@
+// Copyright (c) 2026 ByteDance Ltd. and/or its affiliates
+// SPDX-License-Identifier: Apache-2.0
 // Starts EffectHouse AI from its runtime, where all its other code lives. With no runtime on this machine yet, fetches
 // the pinned one in the background, checks its SHA-256, has it fetch the engine, and answers as a one-tool MCP server
 // reporting how that goes.
@@ -11,14 +13,15 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 
 const self = fileURLToPath(import.meta.url), root = join(self, '../..');
 const task = process.argv[2] ?? process.env.EHAI_START_TASK;
+if (!/^(?:--fetch|(?:scripts|hooks)\/[\w-]+\.mjs)$/.test(task)) throw new Error(`start.mjs: unknown task ${task}`);
 const pinned = name => JSON.parse(readFileSync(join(root, `runtime/${name}.json`), 'utf8'))[`${name}s`]?.[`${process.platform}-${process.arch}`];
 const pin = pinned('runtime'), engine = pinned('engine');
 const home = process.env.EHAI_HOME ?? join(homedir(), '.ehai'), base = join(home, 'runtime'), failed = join(base, '.fetch-failed');
 const shell = version => join(base, version, 'lib/node_modules/ehai/shell');
 // Only a runtime holding the task: a hook a newer plugin names and an older runtime lacks is skipped.
 const code = [pin?.version, 'current'].filter(Boolean).map(version => shell(version)).find(dir => existsSync(join(dir, task)));
-// On Windows, its own curl and tar: a Git Bash tar earlier on PATH reads C: as a remote host.
-const tool = name => process.platform === 'win32' ? join(process.env.SystemRoot ?? 'C:\\Windows', 'System32', `${name}.exe`) : name;
+// The system's own curl and tar, never what comes first on PATH: a Git Bash tar on Windows reads C: as a remote host.
+const tool = name => process.platform === 'win32' ? join(process.env.SystemRoot ?? 'C:\\Windows', 'System32', `${name}.exe`) : `/usr/bin/${name}`;
 const run = (name, args) => spawnSync(tool(name), args, {stdio: 'ignore', windowsHide: true}).status === 0;
 
 const drop = dir => { try { rmSync(dir, {recursive: true, force: true, maxRetries: 3, retryDelay: 200}); } catch { /* an antivirus holds it */ } };
@@ -30,7 +33,7 @@ async function fetchRuntime() {
     rmSync(failed, {force: true});
     work = mkdtempSync(join(base, '.fetch-'));
     const archive = join(work, 'runtime.tgz'), verified = file => import(pathToFileURL(join(work, 'package/shell/scripts', file)));
-    if (!run('curl', ['-fsSL', '--proto-redir', '=https', '--retry', '3', '--connect-timeout', '30', '--speed-limit', '1024', '--speed-time', '120', '-o', archive, pin.urls[0]])) throw new Error('no download');
+    if (!run('curl', ['-fsSL', '--proto-redir', '=https', '--retry', '3', '--connect-timeout', '30', '--speed-limit', '1024', '--speed-time', '120', '--max-filesize', String(pin.bytes), '-o', archive, pin.urls[0]])) throw new Error('no download');
     if (createHash('sha256').update(readFileSync(archive)).digest('hex') !== pin.sha256) throw new Error('wrong checksum');
     if (!run('tar', ['-xzf', archive, '-C', work, 'package/shell'])) throw new Error('cannot unpack');
     const {checkListing, listArchive} = await verified('archive-check.mjs');

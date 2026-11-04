@@ -130,8 +130,9 @@ tool, `ehai_installing`, which says how far setup is or why it stopped.
 - Submitting an effect uploads, as Effect House desktop does, the effect and
   its project, with an AI record: the plans the agent validated, how many
   prompts there were and their lengths (not their text), the editing steps the
-  agent ran, and how many turns there were. Nothing
-  about a project leaves your machine before you confirm a submission. Neither
+  agent ran, and how many turns there were. Apart from a phone preview or a
+  performance test you ask for, nothing about a project leaves your machine
+  before you confirm a submission. Neither
   the plugin nor its engine reads your host's conversation history or
   transcript files.
 - Update check: once a day the local daemon reads this repository's
