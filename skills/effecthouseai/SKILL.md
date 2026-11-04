@@ -23,8 +23,17 @@ from this conversation's shell inherits its sandbox, and the engine then fails.
   Node. Run `sh ../../scripts/setup.sh` as below once, then pass on what it says.
 - Node 20 or later, on Windows: tell the user to quit and reopen the app, then start
   a new conversation.
-- Missing or older, on Windows: tell the user to install the current LTS from
-  nodejs.org, then quit and reopen the app and start a new conversation.
+- Missing or older, on Windows: with the user's OK, download Node's official installer
+  and open it. It needs network access, so request that outside any sandbox. In PowerShell:
+
+  ```powershell
+  $msi = "$env:TEMP\node-v22.17.0-x64.msi"
+  curl.exe -fsSL -o $msi https://nodejs.org/dist/v22.17.0/node-v22.17.0-x64.msi
+  if ((Get-FileHash $msi).Hash -eq '896ff4a1aff30468e93e77a8884bb1aec466df7febf08daaa1d22dd5e4b14756') { Start-Process $msi } else { 'FAILED: the download is not the official installer' }
+  ```
+
+  Tell the user to click through the installer, then quit and reopen the app and start
+  a new conversation. If this fails, ask them to install the current LTS from nodejs.org.
 - Missing or older, on a Mac: run `sh ../../scripts/setup.sh`, resolving the path
   relative to this file. It needs network access and writes to `~/.ehai` and the
   login profile, so request that outside any sandbox. Do what its last line says:
@@ -125,8 +134,14 @@ Two requests need no guide:
 The `ehai` server hosts Studio, preview and account actions. If the engine is
 unavailable (an `eh` cell says Effect House is not reachable, or `eh` is not
 defined), call `studio_sessions` once to start the runtime, then retry the
-connection. When every project slot is in use, its answer names the open
-projects and how to free one: tell the user that and offer to close one. Use `auth_login` when a tool reports that sign-in is required,
+connection. When every project slot is in use and the user asked for a new
+project, `eh.project.create()` makes room by itself: it saves and closes an
+earlier project of this conversation that only a Studio tab you opened shows,
+and your next ehai tool result carries `roomNotice` naming it. Do not ask first;
+tell the user which project was closed to make room. When a refusal still names
+the open projects and how to free one (a tab the user opened, another chat's
+project, unsaved changes, work in progress), tell the user that and offer to
+close one. Use `auth_login` when a tool reports that sign-in is required,
 including a refusal from the `eh` kernel that names `auth_login` as its remedy.
 When a code expires, tell the user and call `auth_login` again when they ask: do
 not open a browser or send them to a new chat. Only if that tool fails, use the exact login command returned by the refusal with

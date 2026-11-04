@@ -21,7 +21,7 @@ Effect House desktop shows under About > Licenses); where it spans several parts
 3. Plugin runtime npm packages
 ================================================================================
 
-The plugin runtime vendors these 138 npm packages for macos-arm64 and windows-x64 (name, license, the file holding its license text):
+The plugin runtime vendors or builds in these 139 npm packages for macos-arm64 and windows-x64 (name, license, the file holding its license text):
 
   @esbuild/darwin-arm64@0.21.5           MIT                               no license file (below)
   @esbuild/win32-x64@0.21.5              MIT                               no license file (below)
@@ -146,6 +146,7 @@ The plugin runtime vendors these 138 npm packages for macos-arm64 and windows-x6
   side-channel-weakmap@1.0.2             MIT                               third-party-notices/3-npm-packages-1.txt
   source-map-js@1.2.1                    BSD-3-Clause                      third-party-notices/3-npm-packages-1.txt
   statuses@2.0.2                         MIT                               third-party-notices/3-npm-packages-1.txt
+  three@0.169.0                          MIT                               third-party-notices/3-npm-packages-1.txt
   toidentifier@1.0.1                     MIT                               third-party-notices/3-npm-packages-1.txt
   tr46@0.0.3                             MIT                               no license file (below)
   type-is@2.1.0                          MIT                               third-party-notices/3-npm-packages-1.txt
@@ -181,4 +182,4 @@ Packages without a license file of their own:
   @logsdk-tt/node@4.0.0-alpha: ISC (first-party telemetry SDK)
   @logsdk-tt/node-plugin-http@4.0.3-alpha: ISC (first-party telemetry SDK)
   @logsdk-tt/node-utils@4.0.0-alpha: ISC (first-party telemetry SDK)
-  ehai@0.0.123: downloaded runtime; see the license included in its distribution
+  ehai@0.0.126: downloaded runtime; see the license included in its distribution

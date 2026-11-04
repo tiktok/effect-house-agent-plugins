@@ -40,10 +40,9 @@ narrows it; newest first). One match → use its `id`. Several → a numbered li
   and `pageUrl`.
 - One effect → `effect_analytics {id}`: its `stats`, `audience`, the reviewer's
   `reasons`, `details` (hint, category, tags, challenges), the most popular
-  TikTok `videos` made with it, `offers`, `viral` and `pageUrl`. `portalUrl`
-  (also on `effects_list` rows) is Effect House's own site, which needs its
-  sign-in and lands on its home page otherwise: the page to open or link is
-  always `pageUrl`; mention `portalUrl` only when the user asks for Effect House.
+  TikTok `videos` made with it, `offers`, `viral` and `pageUrl`. The page to
+  open or link is always `pageUrl`; give no Effect House address for an effect,
+  since its effect pages now answer with Effect House's home page.
 - Say a change with its sign and its window: "+1,240 views in 30 days, +35
   today". A missing `topPercent` means outside the top 25 %, not zero.
 - "Who uses it" → `audience`: region, gender, age and device, for the creators

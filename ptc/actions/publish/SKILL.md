@@ -213,8 +213,8 @@ icon and a name (the two starred fields), so a missing one stops the dry run:
 Effect House will look at it; it is **not published and not live** until
 approved (an update's live version keeps running meanwhile). Say that plainly,
 give the `effectId`, and give `pageUrl` as the link to follow its review (it
-reads the status through the plugin's own sign-in; `portalUrl` opens Effect
-House's home page in a browser not signed in there). What these tools do
+reads the status through the plugin's own sign-in; it is the only link, and no
+Effect House address shows an effect). What these tools do
 not do: a demo video (the plugin cannot attach one), and Icon 2, the optional second icon,
 which the person sets in the Studio's Publish dialog; a submission carries it
 when it is there. Do not offer to fill those in, and never describe the effect

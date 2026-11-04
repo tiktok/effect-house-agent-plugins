@@ -10,7 +10,9 @@ it: the first time you use the plugin, the assistant runs the plugin's
 `scripts/setup.sh`, which downloads the Effect House engine into `~/.ehai`, adds
 `~/.ehai/bin/node` (the Node inside the engine) and adds one line to your login
 profile so apps can find it, after which you reopen the app. A Node you install
-yourself takes priority. On Windows, install Node.js from nodejs.org.
+yourself takes priority, and uninstalling removes all of it. On Windows without Node,
+the assistant offers to download Node's official installer and open it for you to
+click through, or you can install Node.js from nodejs.org.
 
 Projects open in Effect House 5.16.0 and later.
 The plugin's engine is that Effect House release: a project it saves records
@@ -187,9 +189,7 @@ tool, `ehai_installing`, which says how far setup is or why it stopped.
 install has no `ehai` on `PATH`: run `~/.ehai/runtime/current/bin/ehai` on macOS
 or `~/.ehai/runtime/current/bin/ehai.cmd` on Windows. Then remove the plugin with
 `claude plugin uninstall ehai@effect-house` or `codex plugin remove
-ehai@effect-house`. Your project folders are never touched. On a Mac where the
-plugin set up Node, also delete `~/.ehai/bin` and `~/.ehai/setup`, and the line
-marked `# added by the Effect House plugin` in your login profile.
+ehai@effect-house`. Your project folders are never touched.
 
 ## Troubleshooting
 
