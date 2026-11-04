@@ -1,0 +1,7 @@
+# Files this repository owns. Every release replaces the whole tree with the generated plugin package
+# (publish-public-repo.mjs in the plugin's build repository); the paths listed here are never deleted or
+# overwritten by it. One path per line; a trailing slash keeps a directory. This file and support.json
+# are always kept.
+.github/
+LICENSE
+NOTICE

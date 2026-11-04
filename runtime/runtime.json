@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "runtimes": {
+    "darwin-arm64": {
+      "kind": "runtime",
+      "platform": "darwin",
+      "arch": "arm64",
+      "version": "0.0.123",
+      "file": "ehai-0.0.123-darwin-arm64.tgz",
+      "sha256": "8196ca6c808f611521795af5a77a6f709cbdf65f7162829fa8d0c71ce197051d",
+      "bytes": 38525115,
+      "format": "tgz",
+      "files": 5833,
+      "unpackedBytes": 105978482,
+      "urls": [
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai-test/ehai/runtime/0.0.123-vc/ehai-0.0.123-darwin-arm64.tgz"
+      ]
+    },
+    "win32-x64": {
+      "kind": "runtime",
+      "platform": "win32",
+      "arch": "x64",
+      "version": "0.0.123",
+      "file": "ehai-0.0.123-win32-x64.tgz",
+      "sha256": "85a8d7f0c923cffcc5cc366d8b37a70db3fa4b3b19aa02f8d4a1f2d9b877940a",
+      "bytes": 36482219,
+      "format": "tgz",
+      "files": 5844,
+      "unpackedBytes": 102346976,
+      "urls": [
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai-test/ehai/runtime/0.0.123/ehai-0.0.123-win32-x64.tgz"
+      ]
+    }
+  }
+}

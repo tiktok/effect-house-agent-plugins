@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "ehai": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
+        "scripts/bootstrap.mjs"
+      ],
+      "env": {
+        "EHAI_PLUGIN_VERSION": "0.0.123",
+        "EHAI_PLUGIN_DISTRIBUTION": "public",
+        "EHAI_UPDATE_MANIFEST_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/.claude-plugin/plugin.json",
+        "EHAI_UPDATE_SUPPORT_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/support.json",
+        "EHAI_MARKETPLACE": "effect-house",
+        "EHAI_TELEMETRY": "isolated"
+      }
+    },
+    "eh": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
+        "scripts/eh-kernel.mjs"
+      ],
+      "env": {
+        "EHAI_PLUGIN_VERSION": "0.0.123",
+        "EHAI_PLUGIN_DISTRIBUTION": "public",
+        "EHAI_UPDATE_MANIFEST_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/.claude-plugin/plugin.json",
+        "EHAI_UPDATE_SUPPORT_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/support.json",
+        "EHAI_MARKETPLACE": "effect-house",
+        "EHAI_TELEMETRY": "isolated"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+name: Bug report
+description: Something in the EffectHouse AI plugin does not work as documented.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version
+      description: The "version" in .claude-plugin/plugin.json of the installed plugin, or the output of `claude plugin list`.
+    validations:
+      required: true
+  - type: dropdown
+    id: host
+    attributes:
+      label: Host
+      options: [Claude Code, Codex]
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: macOS 26.1 (Apple silicon), Windows 11 x64
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you did and what happened
+      description: The prompt or command, what you expected, and what the plugin answered. Leave out account details and tokens.
+    validations:
+      required: true

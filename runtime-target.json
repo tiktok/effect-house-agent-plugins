@@ -1,0 +1,19 @@
+{
+  "schema": 2,
+  "targets": {
+    "darwin-arm64": {
+      "platform": "darwin",
+      "arch": "arm64",
+      "label": "macos-arm64",
+      "engineDirectory": "cloudeh-macos",
+      "engineApp": "CloudEH Engine.app"
+    },
+    "win32-x64": {
+      "platform": "win32",
+      "arch": "x64",
+      "label": "windows-x64",
+      "engineDirectory": "cloudeh-windows",
+      "engineHost": "CloudEH.exe"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "engines": {
+    "darwin-arm64": {
+      "kind": "engine",
+      "platform": "darwin",
+      "arch": "arm64",
+      "revision": "39ba10c2db693825d6caff576f687cf8afef4c03",
+      "sdkRevision": "a854331d1912fe87e27065cb05ce227cff5d3fc6",
+      "contractHash": "sha256:8dbcdc3b48d2f2efdf908322014e8da3491ec4960dbb2d51a5151eaa5c3601e7",
+      "hostPluginHash": "sha256:f5efb938f1c8f101342d91c0ccf1b6b8691431c106893547b774f6be00083613",
+      "ehVersion": "5.16.0",
+      "file": "cloudeh-darwin-arm64-39ba10c2db69.tar.xz",
+      "sha256": "188bc981d38667de86a7b0cb2177d4d38c563d06460a03a7ce580984a818ebf3",
+      "bytes": 493212404,
+      "format": "tar.xz",
+      "manifest": "CloudEH Engine.app/Contents/Resources/cloudeh-macos/dist/cloud-eh.json",
+      "files": 11196,
+      "unpackedBytes": 923076463,
+      "urls": [
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai-test/ehai/engine/39ba10c2db693825d6caff576f687cf8afef4c03/cloudeh-darwin-arm64-39ba10c2db69.tar.xz"
+      ]
+    },
+    "win32-x64": {
+      "kind": "engine",
+      "platform": "win32",
+      "arch": "x64",
+      "revision": "39ba10c2db693825d6caff576f687cf8afef4c03",
+      "sdkRevision": "a854331d1912fe87e27065cb05ce227cff5d3fc6",
+      "contractHash": "sha256:8dbcdc3b48d2f2efdf908322014e8da3491ec4960dbb2d51a5151eaa5c3601e7",
+      "hostPluginHash": "sha256:f5efb938f1c8f101342d91c0ccf1b6b8691431c106893547b774f6be00083613",
+      "ehVersion": "5.16.0",
+      "file": "cloudeh-win32-x64-39ba10c2db69.tar.gz",
+      "sha256": "e49247d43b32bf17a5da86ab15866d04433eaa70744b44f36c028a86b3a8a586",
+      "bytes": 607770594,
+      "format": "tar.gz",
+      "manifest": "cloudeh-windows/dist/cloud-eh.json",
+      "files": 11240,
+      "unpackedBytes": 1012693248,
+      "urls": [
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai-test/ehai/engine/39ba10c2db693825d6caff576f687cf8afef4c03/cloudeh-win32-x64-39ba10c2db69.tar.gz"
+      ]
+    }
+  }
+}

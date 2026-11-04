@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Effect House support (Discord)
+    url: https://discord.gg/effecthouse
+    about: Questions and help with the EffectHouse AI plugin.
+  - name: Effect House guides
+    url: https://effecthouse.tiktok.com/learn/guides/
+    about: Documentation for Effect House.

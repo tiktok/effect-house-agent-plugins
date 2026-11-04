@@ -1,0 +1,17 @@
+{
+  "name": "effect-house",
+  "interface": {
+    "displayName": "Effect House"
+  },
+  "plugins": [
+    {
+      "name": "ehai",
+      "source": "./",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Design"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
+              "hooks/agent-idle.mjs"
+            ],
+            "async": true,
+            "timeout": 4
+          },
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
+              "hooks/turn-telemetry.mjs"
+            ],
+            "async": true,
+            "timeout": 4
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
+              "hooks/prompt-context.mjs"
+            ],
+            "async": false,
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
+              "hooks/turn-telemetry.mjs"
+            ],
+            "async": true,
+            "timeout": 4
+          }
+        ]
+      }
+    ]
+  }
+}

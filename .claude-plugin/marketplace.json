@@ -1,0 +1,26 @@
+{
+  "name": "effect-house",
+  "owner": {
+    "name": "Effect House",
+    "url": "https://effecthouse.tiktok.com/"
+  },
+  "metadata": {
+    "description": "EffectHouse AI: Describe the effect you want and EffectHouse AI builds it in the real Effect House engine: face and hand tracking, stickers, makeup, 3D, text and scripted mini-games. Watch it in a live preview or on your phone, tune it with sliders, then publish it to your Effect House account and follow how it performs."
+  },
+  "plugins": [
+    {
+      "name": "ehai",
+      "source": "./",
+      "description": "Describe the effect you want and EffectHouse AI builds it in the real Effect House engine: face and hand tracking, stickers, makeup, 3D, text and scripted mini-games. Watch it in a live preview or on your phone, tune it with sliders, then publish it to your Effect House account and follow how it performs.",
+      "displayName": "EffectHouse AI",
+      "category": "design",
+      "tags": [
+        "effect-house",
+        "tiktok",
+        "ar-effects",
+        "ehai"
+      ],
+      "homepage": "https://effecthouse.tiktok.com/"
+    }
+  ]
+}
