@@ -74,6 +74,14 @@ For capability guidance, call `eh.knowledge.listSkills()` and read only the rele
 entries under the returned `skillsRoot`. Physics, tracking, materials and other
 topics are internal guidance, not extra commands the user must invoke.
 
+A **lyric effect** (lyrics, karaoke, words that follow a song) follows the
+`lyrics` skill, with two differences here: `eh.sounds.pick` does not exist, so
+offer songs from `sounds_search {withLyrics: true}` and let the user choose in
+chat, then `eh.sounds.select(id, {startTime})` (lyrics required, the default);
+and the Studio preview plays the song from its start time with the lyrics, on
+this computer's speakers while the preview's speaker is on, starting both over
+whenever the effect restarts.
+
 When the user wants to make an effect but has no clear idea, or asks for ideas
 or what is trending, offer trends first (`trends_list`, the ideas guide); a
 picked trend is the brief, and its id goes in at publish. Do not show trends

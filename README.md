@@ -41,7 +41,8 @@ marketplace so Claude Code clones it over HTTPS. Turn on auto-update for this
 marketplace: updates are off by default for a marketplace you add, so open
 `/plugin`, Marketplaces, choose `effect-house` and enable auto-update. When a new
 version is out, ask in the chat to update and the plugin runs the update for you
-(it runs `claude plugin update ehai@effect-house`, which you can also run yourself).
+(it runs `claude plugin marketplace update effect-house`, then
+`claude plugin update ehai@effect-house`, which you can also run yourself).
 
 Codex:
 
@@ -207,6 +208,9 @@ one it names:
 - Another session is downloading: wait; one download serves both.
 - `ehai_update_required`: this version is below the supported minimum; update
   the plugin with the command it names, then start a new session.
+- `Cannot add marketplace "effect-house": its source doesn't match`: an earlier
+  copy came from somewhere else. Run `claude plugin marketplace remove effect-house`,
+  then add the marketplace and install again.
 - Anything else: run `ehai doctor` (the managed path above) and reconnect.
 
 For help with Effect House itself, see the

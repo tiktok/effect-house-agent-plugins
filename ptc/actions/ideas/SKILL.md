@@ -89,7 +89,8 @@ run, and run the dry run again after changing it.
 3. Select it in the `eh` server's `run` tool:
    `eh.sounds.select(id, {startTime, requireLyrics: false})` — `startTime` in
    seconds within the clip (up to `durationSec`), e.g. where the chorus
-   starts. Without `requireLyrics: false` a song with no lyrics is refused.
+   starts. Without `requireLyrics: false` a song with no lyrics is refused;
+   a lyric effect keeps the default, so its lyrics reach the preview.
 4. Chat cannot play audio. To listen first, the user opens the Studio's
    Publish window → Default sound, which plays each one; hearting a favourite
    happens there too.

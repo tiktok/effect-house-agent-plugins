@@ -182,4 +182,4 @@ Packages without a license file of their own:
   @logsdk-tt/node@4.0.0-alpha: ISC (first-party telemetry SDK)
   @logsdk-tt/node-plugin-http@4.0.3-alpha: ISC (first-party telemetry SDK)
   @logsdk-tt/node-utils@4.0.0-alpha: ISC (first-party telemetry SDK)
-  ehai@0.0.126: downloaded runtime; see the license included in its distribution
+  ehai@0.0.127: downloaded runtime; see the license included in its distribution
