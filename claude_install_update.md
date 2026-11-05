@@ -114,7 +114,7 @@ machine just because this shell's PATH does not contain it.
   directly; it does not require Node or a separate Node installation:
 
   ```sh
-  /bin/sh "<installPath>/scripts/setup.sh"
+  LC_ALL=C LANG=C /bin/sh "<installPath>/scripts/setup.sh"
   ```
 
   This downloads the runtime and engine, configures `~/.ehai/bin/node` (or
