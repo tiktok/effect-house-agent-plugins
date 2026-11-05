@@ -25,6 +25,21 @@ opens after a copy of its original project file is kept in the project's
 
 This repository is a plugin marketplace for both hosts, named `effect-house`.
 
+To have your assistant install or update the latest version and complete setup,
+send the matching prompt:
+
+Codex:
+
+```text
+Read https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/codex_install_update.md and follow it to install or update EffectHouse AI and complete setup.
+```
+
+Claude Code:
+
+```text
+Read https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/claude_install_update.md and follow it to install or update EffectHouse AI and complete setup.
+```
+
 Claude Code:
 
 ```bash
