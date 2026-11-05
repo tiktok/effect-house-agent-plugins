@@ -179,7 +179,7 @@ Packages without a license file of their own:
 4. First-party packages
 ================================================================================
 
-  @logsdk-tt/node@4.0.0-alpha: ISC (first-party telemetry SDK)
-  @logsdk-tt/node-plugin-http@4.0.3-alpha: ISC (first-party telemetry SDK)
-  @logsdk-tt/node-utils@4.0.0-alpha: ISC (first-party telemetry SDK)
-  ehai@0.0.127: downloaded runtime; see the license included in its distribution
+  @logsdk-tt/node@4.0.0-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
+  @logsdk-tt/node-plugin-http@4.0.3-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
+  @logsdk-tt/node-utils@4.0.0-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
+  ehai@0.0.128: downloaded runtime; see the license included in its distribution

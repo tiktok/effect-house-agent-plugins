@@ -30,7 +30,17 @@ Claude Code:
 ```bash
 claude plugin marketplace add tiktok/effect-house-agent-plugins
 claude plugin install ehai@effect-house
+node ~/.claude/plugins/cache/effect-house/ehai/<version>/scripts/start.mjs setup
 ```
+
+The third command is the first-time setup: it downloads the engine (about
+600 MB) and the runtime once, prints the progress, and ends with `READY` or
+`FAILED` and why. It needs network access, takes a few minutes, and is safe to
+run again. `claude plugin list --json` prints the installed folder as
+`installPath`; the cache keeps one folder per version. Without this step the
+first conversation only downloads and the tools appear in the one after; with
+it the next conversation has every tool. The install prompt on the Effect House
+site has the assistant run all three for you.
 
 On Claude Code 2.1.292 or later one command does both:
 `claude plugin install ehai --marketplace tiktok/effect-house-agent-plugins`.
@@ -49,10 +59,13 @@ Codex:
 ```bash
 codex plugin marketplace add tiktok/effect-house-agent-plugins
 codex plugin add ehai@effect-house
+node ~/.codex/plugins/cache/effect-house/ehai/<version>/scripts/start.mjs setup
 ```
 
-A Codex task does not see a plugin installed or updated while it runs: start a
-new task after installing, and again after every update.
+The third command is the same first-time setup; `codex plugin add --json`
+prints the installed path, and the cache keeps one folder per version. A Codex
+task does not see a plugin installed or updated while it runs: start a new task
+after installing, and again after every update.
 Codex installs a new version of the plugin when it refreshes the marketplace
 (`codex plugin marketplace upgrade effect-house`, which the plugin's own update
 runs for you; recent Codex versions also refresh when a session starts).
@@ -106,9 +119,10 @@ the specialized guides as the work needs them; there is no topic menu to choose.
 
 This package carries neither the engine nor the runtime. `runtime/engine.json`
 and `runtime/runtime.json` name them, with the HTTPS address, the size and the
-sha256 of each archive. On a machine's first conversation `scripts/start.mjs` downloads
-both in the background, says so through `ehai_installing`, and asks you to start a new
-conversation when they are ready. It downloads the engine
+sha256 of each archive. The install's `setup` step (see Install) downloads both in the
+foreground and reports `READY`. If it was skipped, on a machine's first conversation
+`scripts/start.mjs` downloads both in the background, says so through `ehai_installing`,
+and asks you to start a new conversation when they are ready. It downloads the engine
 (about 600 MB) and the `ehai` runtime (about 34 MB) from that address into
 `~/.ehai/engines/<first 12 digits of its sha256>/` and `~/.ehai/runtime/<version>/`. A download is used
 only when its sha256 equals the one in this package, no link in its archive leads outside it,
@@ -126,16 +140,17 @@ tool, `ehai_installing`, which says how far setup is or why it stopped.
   performance, trends, sounds, the asset library, image generation and phone
   preview), and the artifact host named in the pin files for the first-start
   download. What these actions send is what they need: for example the words
-  of a search or an image description, or the effect package for a phone
-  preview or a performance test. Covers, avatars and sound previews load from
-  TikTok's CDN. Model search sends its search words to `api.sketchfab.com`;
-  importing a model also needs your own Sketchfab token.
+  of a search or an image description (with any picture the agent passes to an
+  image, GIF or 3D generation), or the effect package for a phone preview or a
+  performance test. Covers, avatars, sound previews and a selected sound's
+  audio and lyrics load from TikTok's CDN. Model search sends its search words
+  to `api.sketchfab.com`; importing a model also needs your own Sketchfab token.
 - Submitting an effect uploads, as Effect House desktop does, the effect and
   its project, with an AI record: the plans the agent validated, how many
   prompts there were and their lengths (not their text), the editing steps the
   agent ran, and how many turns there were. Apart from a phone preview or a
-  performance test you ask for, nothing about a project leaves your machine
-  before you confirm a submission. Neither
+  performance test you ask for, and a picture the agent passes to a generation,
+  nothing about a project leaves your machine before you confirm a submission. Neither
   the plugin nor its engine reads your host's conversation history or
   transcript files.
 - Update check: once a day the local daemon reads this repository's
@@ -145,7 +160,7 @@ tool, `ehai_installing`, which says how far setup is or why it stopped.
   by the Effect House install skill asks that skill's installer instead, which
   reads its release file from the marketplace repository with git. Any failure
   means no notice. Set `EHAI_UPDATE_CHECK=off` in the environment of the host
-  to turn it off.
+  to turn it off, with the update offer in the chat.
 - Every tool needs a TikTok account signed in to Effect House: the first call
   shows a QR code to scan with the TikTok app. The session is stored in
   `~/.ehai`, readable only by your user.
@@ -154,10 +169,10 @@ tool, `ehai_installing`, which says how far setup is or why it stopped.
   analytics collector that Effect House's configuration names for your
   account's region, under the plugin's own application id. Events carry a
   per-machine identifier (a hash of the platform UUID on macOS, the same one
-  Effect House desktop uses; a random id kept in `~/.ehai/telemetry-id`
-  elsewhere) and, while you are signed in, your Effect House account id and
-  badge level. They never carry the text of your prompts, your files or their
-  paths. Set `EHAI_TELEMETRY=off` in the environment of the host to send
+  Effect House desktop uses; a random id elsewhere; kept in
+  `~/.ehai/telemetry-id`) and, while you are signed in, your Effect House
+  account id, badge level and country. They never carry the text of your
+  prompts, your files or their paths. Set `EHAI_TELEMETRY=off` in the environment of the host to send
   nothing; this also stops recording turns and prompt lengths for the AI
   record. The setting applies to each conversation that host runs, even when
   another host started the shared background service; a Studio page opened
