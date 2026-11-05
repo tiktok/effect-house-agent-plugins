@@ -101,52 +101,39 @@ updates as unconfigured separately from the completed installation.
 
 Use only the exact `installPath` from the final successful installation result.
 Replace placeholders below with that path and quote them for the native shell.
-Detect Node in this shell; do not conclude that Node is absent from the whole
-machine just because this shell's PATH does not contain it.
 
-- If Node.js 20 or later is available, use its resolved executable to run:
+The plugin brings its own Node.js, so setup is the same whether or not this
+machine has Node. Run the shipped setup entrypoint for this computer:
 
-  ```sh
-  node "<installPath>/scripts/start.mjs" setup
-  ```
-
-- If Node is not found on Apple silicon macOS, run the shipped no-Node entrypoint
-  directly; it does not require Node or a separate Node installation:
+- Apple silicon macOS:
 
   ```sh
   LC_ALL=C LANG=C /bin/sh "<installPath>/scripts/setup.sh"
   ```
 
-  This downloads the runtime and engine, configures `~/.ehai/bin/node` (or
-  `<EHAI_HOME>/bin/node`) and its login-profile PATH entry. Tell the user what it
-  configures. This entrypoint may return `RUNNING:` with exit code 0 while its
-  background worker continues. Wait about 30 seconds and invoke the same shell
-  command again to query/resume that worker; do not treat `RUNNING:` as completion
-  or launch another installation. Continue until `READY:` or `FAILED:`. A
-  `FAILED:` line is a failure even if the script exits with code 0.
-  After the shell reports `READY:`, verify the configured Node executable is usable
-  and version 20 or later, then use that absolute Node path to run the installed
-  `scripts/start.mjs setup` and obtain the final `READY:` confirmation. If the
-  bundled Node cannot be found or run, report that exact step as incomplete.
-  The desktop app may need a full restart to discover the new Node; forking alone
-  does not establish that its PATH has refreshed. Include this in the handoff.
+- Windows x64 (PowerShell):
 
-- If Node is older than 20, or Node is missing on Windows, report the Node.js
-  20+ prerequisite and resume setup after it is available. Do not claim success
-  or repeat plugin installation for a missing runtime prerequisite.
+  ```powershell
+  powershell -NoProfile -ExecutionPolicy Bypass -File "<installPath>\scripts\setup.ps1"
+  ```
 
-Setup may download about 600 MB and take several minutes. For the Node setup,
-keep the same process running, check its progress with waits of at most 60 seconds,
-and wait for both its final output and exit code. For the shell entrypoint, follow
-its `RUNNING:` polling rules above. Final setup success requires the Node setup's
-`READY:` line and exit code 0.
-On `FAILED:` or a nonzero exit, report setup as incomplete and retain the error.
-A Node setup process that exits without `READY:` is also incomplete; a shell
-status query returning `RUNNING:` must continue polling instead. Resume only the
-unfinished step after resolving its cause; do not repeat registration and
-installation when release verification already passed.
-Do not launch duplicate setup processes. Keep completed installation separate
-from incomplete setup in the status you report.
+- Any other computer (Intel Mac, Linux, Windows on Arm): report that this release
+  supports only Apple silicon macOS and Windows x64, and stop.
+
+The entrypoint checks the pinned SHA-256 of everything it downloads before it runs
+any of it, downloads the runtime (with its own Node) and the engine, about 600 MB
+in all, into `~/.ehai` (or `<EHAI_HOME>`), and changes no shell profile or PATH.
+It runs in the foreground and can take several minutes: keep the same process
+running, check its progress with waits of at most 60 seconds, and wait for both
+its final line and its exit code. Do not launch a second setup while one runs.
+
+Setup succeeded only when it prints a line starting with `READY:` and exits 0.
+A `FAILED:` line or a nonzero exit means setup is incomplete: report the error
+line as it is. Running the same entrypoint again is safe: it keeps a runtime that
+is already installed. Resume only the unfinished step after resolving
+its cause; do not repeat registration and installation when release verification
+already passed. Keep completed installation separate from incomplete setup in
+the status you report.
 
 ## 4. Reload and finish
 
