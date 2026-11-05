@@ -16,25 +16,29 @@ When you report a problem, include the version (`version` in `.claude-plugin/plu
 
 ## What the plugin runs
 
-- Two MCP servers, started by the host with its own `node` through
-  `scripts/start.mjs`, the only JavaScript file in the public repository. It runs
-  them from the runtime, which it downloads first if this machine has none, using the
-  system's `curl` and `tar` and checking the sha256 named in `runtime/runtime.json`
-  before unpacking anything.
+- Two MCP servers, started by the host through `scripts/start` (`scripts/start.cmd` on
+  Windows), which runs `scripts/start.mjs`, the only JavaScript file in the public
+  repository, on the runtime's own Node.js, or on a Node.js from `PATH` before setup has
+  run. It runs them from the runtime, which it downloads first if this machine has none,
+  using the system's `curl` and `tar` and checking the sha256 named in
+  `runtime/runtime.json` before unpacking anything.
+- The first-time setup, `scripts/setup.sh` on a Mac and `scripts/setup.ps1` on Windows,
+  which you or the assistant run. Each downloads the pinned runtime over HTTPS with the
+  system's `curl`, checks the whole archive's SHA-256, and only then runs the official
+  Node.js inside it (`package/bin/node`, `package/bin/node.exe`), which keeps the Node.js
+  Foundation's signature, to install the runtime under `~/.ehai/runtime/` and fetch
+  the engine. It changes neither `PATH` nor your shell profile.
 - A local daemon (`ehai serve`) from the runtime the bootstrap installs under
   `~/.ehai/runtime/`. It listens on `127.0.0.1` only.
 - One Effect House engine process per host session, from the engine installed
   under `~/.ehai/engines/`.
-- On a Mac with no Node, and only when the assistant runs it: `scripts/setup.sh`,
-  which downloads the pinned engine over HTTPS, checks its SHA-256 and code signature,
-  writes `~/.ehai/bin/node` and appends one marked line to your login profile.
 <!-- hooks:start -->
-- Three hooks, also started through `scripts/start.mjs` and run from the runtime, in Claude Code only (Codex runs none of them): a
+- Three hooks, also started through `scripts/start` and run from the runtime, in Claude Code only (Codex runs none of them): a
   turn-end signal; a prompt-time note of what the Studio shows, which also sends
   the start of your prompt to the local daemon to label its change journal (it
   does not leave your machine); and a turn record that counts each turn and its
   prompt's length, and hands the prompt and the turn's end to the local engine,
-  which keeps only the length. Prompt text does not leave your machine. Every hook is `node` on one packed script, with no shell, and
+  which keeps only the length. Prompt text does not leave your machine. Every hook runs one packed script on the runtime's Node through `scripts/start`, and
   none approves, denies or changes a permission.
 <!-- hooks:end -->
 

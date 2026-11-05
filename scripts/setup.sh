@@ -1,33 +1,20 @@
 #!/bin/sh
 # Copyright (c) 2026 ByteDance Ltd. and/or its affiliates
 # SPDX-License-Identifier: Apache-2.0
-# For a Mac with no Node, which cannot run start.mjs: gets the runtime's code the same way, then runs the setup inside it.
-set -u
-export LC_ALL=C LANG=C
-USER_PATH=$PATH PATH=/usr/bin:/bin
-ROOT=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
-fail() { printf 'FAILED: %s\n' "$1" >&2; exit 1; }
-field() { plutil -extract "runtimes.darwin-arm64.$1" raw -o - "$ROOT/runtime/runtime.json" 2>/dev/null; }
-SHA=$(field sha256)
-SETUP=${EHAI_HOME:-$HOME/.ehai}/setup
-DIR=$SETUP/shell-$(printf '%s' "$SHA" | cut -c1-12)
-PART=$DIR.part
-if [ ! -d "$DIR/package/shell" ] && mkdir -p "$SETUP"; then
-  curl -fsSL --proto-redir =https --retry 3 --connect-timeout 30 --speed-limit 1024 --speed-time 120 --max-filesize "$(field bytes)" --continue-at - -o "$PART" "$(field urls.0)"
-  got=$?
-  if [ "$got" -ne 0 ]; then
-    [ "$got" -ne 63 ] || rm -f "$PART"
-    fail "runtime download failed (curl exit $got)."
-  fi
-  ACTUAL_SHA=$(shasum -a 256 "$PART") || fail 'could not calculate runtime SHA-256 (see error above).'
-  if [ -n "$SHA" ] && [ "${ACTUAL_SHA%% *}" = "$SHA" ]; then
-    TMP=$(mktemp -d "$DIR.XXXXXX") && tar -xzf "$PART" -C "$TMP" package/shell && mv "$TMP" "$DIR"
-    [ -z "${TMP:-}" ] || rm -rf "$TMP"
-    rm -f "$PART"
-  else
-    rm -f "$PART"
-    fail 'the runtime download does not match its pinned SHA-256.'
-  fi
+# First-time setup on a Mac: checks the whole pinned runtime archive, then runs the rest on the Node and code inside it.
+export LC_ALL=C LANG=C EHAI_PUBLIC_PLUGIN_ROOT="$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)"
+PATH=/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+fail() { echo "FAILED: $1"; exit 1; }
+field() { plutil -extract "runtimes.darwin-arm64.$1" raw -o - "$EHAI_PUBLIC_PLUGIN_ROOT/runtime/runtime.json" 2>/dev/null; }
+[ "$(sysctl -n hw.optional.arm64 2>/dev/null)" = 1 ] && SHA=$(field sha256) || fail 'this computer is not an Apple silicon Mac, or the plugin names no runtime for it.'
+DIR=${EHAI_HOME:-$HOME/.ehai}/runtime/$(field version)/lib/node_modules/ehai
+if [ ! -x "$DIR/bin/node" ]; then
+  DIR=$(mktemp -d "${TMPDIR:-/tmp}/ehai-setup.XXXXXX")/package || fail 'cannot write a temporary folder.'
+  trap 'rm -rf "${DIR%/package}"' EXIT
+  echo 'Downloading the EffectHouse AI runtime...'
+  curl -fsSL --proto-redir =https --retry 3 --connect-timeout 30 --speed-limit 1024 --speed-time 120 --max-filesize "$(field bytes)" -o "$DIR.tgz" "$(field urls.0)" || fail "the runtime download failed (curl exit $?). Check the network or proxy, then run this again."
+  [ "$(shasum -a 256 "$DIR.tgz" | cut -d ' ' -f 1)" = "$SHA" ] || fail 'the runtime download does not match its pinned SHA-256; nothing from it was run.'
+  tar -xzf "$DIR.tgz" -C "${DIR%/package}" package/bin/node package/shell/scripts || fail 'could not unpack the runtime archive.'
+  export EHAI_VERIFIED_RUNTIME="$DIR.tgz"
 fi
-[ -d "$DIR/package/shell" ] || fail 'could not prepare the EffectHouse AI setup files (see error above).'
-PATH=$USER_PATH EHAI_PUBLIC_PLUGIN_ROOT=$ROOT exec /bin/sh "$DIR/package/shell/scripts/setup.sh"
+"$DIR/bin/node" "$DIR/shell/scripts/setup-runtime.mjs"

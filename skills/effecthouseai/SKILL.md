@@ -14,31 +14,21 @@ An existing valid session needs no login announcement.
 
 ## When the EHAI tools are not available
 
-Both EHAI servers run on Node.js 20 or later, so check it before anything else:
-run `node --version` once. Do not search this machine for another cause, look for
-or switch to another Node, or start the EHAI daemon or engine yourself: one started
-from this conversation's shell inherits its sandbox, and the engine then fails.
+The plugin runs on a private Node that its setup installs under `~/.ehai`, so this machine
+needs no Node of its own. Do not search this machine for another cause, look for or install a
+Node, or start the EHAI daemon or engine yourself: one started from this conversation's shell
+inherits its sandbox, and the engine then fails.
 
-- Node 20 or later, on a Mac: the app has not loaded the plugin, or does not see this
-  Node. Run `sh ../../scripts/setup.sh` as below once, then pass on what it says.
-- Node 20 or later, on Windows: tell the user to quit and reopen the app, then start
-  a new conversation.
-- Missing or older, on Windows: with the user's OK, download Node's official installer
-  and open it. It needs network access, so request that outside any sandbox. In PowerShell:
+Run the setup once, resolving the path relative to this file, and keep it running until it ends.
+It needs network access and writes to `~/.ehai`, so request that outside any sandbox. It changes
+neither `PATH` nor the login profile.
 
-  ```powershell
-  $msi = "$env:TEMP\node-v22.17.0-x64.msi"
-  curl.exe -fsSL -o $msi https://nodejs.org/dist/v22.17.0/node-v22.17.0-x64.msi
-  if ((Get-FileHash $msi).Hash -eq '896ff4a1aff30468e93e77a8884bb1aec466df7febf08daaa1d22dd5e4b14756') { Start-Process $msi } else { 'FAILED: the download is not the official installer' }
-  ```
+- On a Mac: `sh ../../scripts/setup.sh`
+- On Windows, in PowerShell: `powershell -NoProfile -ExecutionPolicy Bypass -File ..\..\scripts\setup.ps1`
 
-  Tell the user to click through the installer, then quit and reopen the app and start
-  a new conversation. If this fails, ask them to install the current LTS from nodejs.org.
-- Missing or older, on a Mac: run `sh ../../scripts/setup.sh`, resolving the path
-  relative to this file. It needs network access and writes to `~/.ehai` and the
-  login profile, so request that outside any sandbox. Do what its last line says:
-  `RUNNING` means report the progress and run it again about 30 seconds later,
-  `READY` and `FAILED` tell you what to say to the user.
+It may download about 600 MB and take a few minutes. It prints its progress and ends with
+`READY`, exit code 0: tell the user to start a new conversation, which has the tools. Or it ends with
+`FAILED: <why>`, exit code 1: pass on why. Running it again resumes.
 
 ## When the user is new or asks what EHAI can do
 

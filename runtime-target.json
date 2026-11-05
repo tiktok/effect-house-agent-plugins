@@ -6,14 +6,13 @@
       "arch": "arm64",
       "label": "macos-arm64",
       "engineDirectory": "cloudeh-macos",
-      "engineApp": "CloudEH Engine.app"
+      "engineApp": "EHAIEngine.app"
     },
     "win32-x64": {
       "platform": "win32",
       "arch": "x64",
       "label": "windows-x64",
-      "engineDirectory": "cloudeh-windows",
-      "engineHost": "CloudEH.exe"
+      "engineDirectory": "cloudeh-windows"
     }
   }
 }

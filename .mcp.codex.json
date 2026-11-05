@@ -1,10 +1,9 @@
 {
   "mcpServers": {
     "EHAIPlugin": {
-      "command": "node",
+      "command": "./scripts/start",
       "args": [
-        "-e",
-        "const fs=require(\"node:fs\"),p=require(\"node:path\"),os=require(\"node:os\"),cp=require(\"node:child_process\");const suffix=\"ehai/0.0.128/scripts/start.mjs\",root=process.env.CODEX_HOME||p.join(os.homedir(),\".codex\"),cache=p.join(root,\"plugins\",\"cache\");const fail=m=>{console.error(m);process.exit(1)};const isFile=f=>{try{return fs.statSync(f).isFile()}catch{return false}};let markets=[];try{markets=fs.readdirSync(cache).filter(m=>!m.startsWith(\".\"))}catch{};const matches=markets.map(m=>p.join(cache,m,...suffix.split(\"/\"))).filter(isFile);if(matches.length>1)fail(\"ehai: multiple matching Codex installs; remove the duplicate plugin\");if(matches.length===0)fail(\"ehai: bootstrap.mjs not found under CODEX_HOME/plugins/cache — reinstall the plugin\");const ca=[],cv=process.versions.node.split(\".\").map(Number),co=(process.env.NODE_OPTIONS||\"\").split(/\\s+/);if(!co.includes(\"--use-openssl-ca\")&&!co.includes(\"--use-bundled-ca\"))ca.push(\"--use-bundled-ca\");if((cv[0]>=24||(cv[0]===23&&cv[1]>=8)||(cv[0]===22&&cv[1]>=15))&&!co.includes(\"--use-system-ca\")&&process.env.NODE_USE_SYSTEM_CA!==\"1\")ca.push(\"--use-system-ca\");const posix=process.platform!==\"win32\";if(posix&&typeof process.execve===\"function\")process.execve(process.execPath,[process.execPath,...ca,matches[0]],process.env);const child=cp.spawn(process.execPath,[...ca,matches[0]],{stdio:\"inherit\",windowsHide:true});for(const s of [\"SIGINT\",\"SIGTERM\",\"SIGHUP\",\"SIGBREAK\"])process.on(s,()=>{if(posix&&s!==\"SIGBREAK\")try{child.kill(s)}catch{}});child.on(\"error\",e=>fail(\"ehai: \"+e.message));child.on(\"exit\",(code,signal)=>{if(code!==null)process.exit(code);process.removeAllListeners(signal);setTimeout(()=>process.exit(1),1000);try{process.kill(process.pid,signal)}catch{process.exit(1)}});"
+        "scripts/bootstrap.mjs"
       ],
       "env_vars": [
         "CODEX_HOME",
@@ -12,24 +11,25 @@
         "https_proxy",
         "NO_PROXY",
         "no_proxy",
-        "NODE_EXTRA_CA_CERTS"
+        "NODE_EXTRA_CA_CERTS",
+        "EHAI_HOME"
       ],
       "env": {
-        "EHAI_PLUGIN_VERSION": "0.0.128",
+        "EHAI_PLUGIN_VERSION": "0.0.129",
         "EHAI_PLUGIN_DISTRIBUTION": "public",
         "EHAI_UPDATE_MANIFEST_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/.claude-plugin/plugin.json",
         "EHAI_UPDATE_SUPPORT_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/support.json",
         "EHAI_MARKETPLACE": "effect-house",
-        "EHAI_START_TASK": "scripts/bootstrap.mjs"
+        "EHAI_WORKSPACE_FROM_HOST": "codex"
       },
       "startup_timeout_sec": 60,
-      "tool_timeout_sec": 600
+      "tool_timeout_sec": 600,
+      "cwd": "."
     },
     "EHAI": {
-      "command": "node",
+      "command": "./scripts/start",
       "args": [
-        "-e",
-        "const fs=require(\"node:fs\"),p=require(\"node:path\"),os=require(\"node:os\"),cp=require(\"node:child_process\");const suffix=\"ehai/0.0.128/scripts/start.mjs\",root=process.env.CODEX_HOME||p.join(os.homedir(),\".codex\"),cache=p.join(root,\"plugins\",\"cache\");const fail=m=>{console.error(m);process.exit(1)};const isFile=f=>{try{return fs.statSync(f).isFile()}catch{return false}};let markets=[];try{markets=fs.readdirSync(cache).filter(m=>!m.startsWith(\".\"))}catch{};const matches=markets.map(m=>p.join(cache,m,...suffix.split(\"/\"))).filter(isFile);if(matches.length>1)fail(\"ehai: multiple matching Codex installs; remove the duplicate plugin\");if(matches.length===0)fail(\"ehai: eh-kernel.mjs not found under CODEX_HOME/plugins/cache — reinstall the plugin\");const ca=[],cv=process.versions.node.split(\".\").map(Number),co=(process.env.NODE_OPTIONS||\"\").split(/\\s+/);if(!co.includes(\"--use-openssl-ca\")&&!co.includes(\"--use-bundled-ca\"))ca.push(\"--use-bundled-ca\");if((cv[0]>=24||(cv[0]===23&&cv[1]>=8)||(cv[0]===22&&cv[1]>=15))&&!co.includes(\"--use-system-ca\")&&process.env.NODE_USE_SYSTEM_CA!==\"1\")ca.push(\"--use-system-ca\");const posix=process.platform!==\"win32\";if(posix&&typeof process.execve===\"function\")process.execve(process.execPath,[process.execPath,...ca,matches[0]],process.env);const child=cp.spawn(process.execPath,[...ca,matches[0]],{stdio:\"inherit\",windowsHide:true});for(const s of [\"SIGINT\",\"SIGTERM\",\"SIGHUP\",\"SIGBREAK\"])process.on(s,()=>{if(posix&&s!==\"SIGBREAK\")try{child.kill(s)}catch{}});child.on(\"error\",e=>fail(\"ehai: \"+e.message));child.on(\"exit\",(code,signal)=>{if(code!==null)process.exit(code);process.removeAllListeners(signal);setTimeout(()=>process.exit(1),1000);try{process.kill(process.pid,signal)}catch{process.exit(1)}});"
+        "scripts/eh-kernel.mjs"
       ],
       "env_vars": [
         "CODEX_HOME",
@@ -37,18 +37,20 @@
         "https_proxy",
         "NO_PROXY",
         "no_proxy",
-        "NODE_EXTRA_CA_CERTS"
+        "NODE_EXTRA_CA_CERTS",
+        "EHAI_HOME"
       ],
       "env": {
-        "EHAI_PLUGIN_VERSION": "0.0.128",
+        "EHAI_PLUGIN_VERSION": "0.0.129",
         "EHAI_PLUGIN_DISTRIBUTION": "public",
         "EHAI_UPDATE_MANIFEST_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/.claude-plugin/plugin.json",
         "EHAI_UPDATE_SUPPORT_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/support.json",
         "EHAI_MARKETPLACE": "effect-house",
-        "EHAI_START_TASK": "scripts/eh-kernel.mjs"
+        "EHAI_WORKSPACE_FROM_HOST": "codex"
       },
       "startup_timeout_sec": 60,
-      "tool_timeout_sec": 660
+      "tool_timeout_sec": 660,
+      "cwd": "."
     }
   }
 }

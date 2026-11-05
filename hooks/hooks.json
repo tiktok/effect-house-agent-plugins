@@ -5,21 +5,13 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node",
-            "args": [
-              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
-              "hooks/agent-idle.mjs"
-            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/start\" hooks/agent-idle.mjs",
             "async": true,
             "timeout": 4
           },
           {
             "type": "command",
-            "command": "node",
-            "args": [
-              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
-              "hooks/turn-telemetry.mjs"
-            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/start\" hooks/turn-telemetry.mjs",
             "async": true,
             "timeout": 4
           }
@@ -31,21 +23,13 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node",
-            "args": [
-              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
-              "hooks/prompt-context.mjs"
-            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/start\" hooks/prompt-context.mjs",
             "async": false,
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "node",
-            "args": [
-              "${CLAUDE_PLUGIN_ROOT}/scripts/start.mjs",
-              "hooks/turn-telemetry.mjs"
-            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/start\" hooks/turn-telemetry.mjs",
             "async": true,
             "timeout": 4
           }

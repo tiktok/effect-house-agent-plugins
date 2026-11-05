@@ -4,15 +4,11 @@ A Claude Code and Codex plugin for TikTok Effect House. Describe the effect you
 want and the agent builds it in the real Effect House engine, shows it in a live
 preview, lets you tune it with sliders, and publishes it to your Effect House
 account. It runs on macOS with Apple silicon and on Windows x64 (an Intel Mac is
-not supported: the plugin says so and stops) and needs Node.js 20 or later on
-the `PATH` the host starts from. On a Mac without Node you do not need to install
-it: the first time you use the plugin, the assistant runs the plugin's
-`scripts/setup.sh`, which downloads the Effect House engine into `~/.ehai`, adds
-`~/.ehai/bin/node` (the Node inside the engine) and adds one line to your login
-profile so apps can find it, after which you reopen the app. A Node you install
-yourself takes priority, and uninstalling removes all of it. On Windows without Node,
-the assistant offers to download Node's official installer and open it for you to
-click through, or you can install Node.js from nodejs.org.
+not supported: the plugin says so and stops). You do not need to install Node.js: the
+first-time setup downloads the runtime, which holds an official Node.js of its own, under
+`~/.ehai`, and both hosts start the plugin on that Node. It changes neither `PATH` nor your
+shell profile, and uninstalling removes it. On a machine where setup has not run yet, a
+Node.js 20 or later on `PATH` starts the plugin instead, which then downloads the same files.
 
 Projects open in Effect House 5.16.0 and later.
 The plugin's engine is that Effect House release: a project it saves records
@@ -45,13 +41,16 @@ Claude Code:
 ```bash
 claude plugin marketplace add tiktok/effect-house-agent-plugins
 claude plugin install ehai@effect-house
-node ~/.claude/plugins/cache/effect-house/ehai/<version>/scripts/start.mjs setup
+sh ~/.claude/plugins/cache/effect-house/ehai/<version>/scripts/setup.sh
 ```
 
-The third command is the first-time setup: it downloads the engine (about
-600 MB) and the runtime once, prints the progress, and ends with `READY` or
-`FAILED` and why. It needs network access, takes a few minutes, and is safe to
-run again. `claude plugin list --json` prints the installed folder as
+The third command is the first-time setup: it downloads the runtime, with the
+Node.js the plugin runs on, and the engine (about 600 MB) once, checks each archive's
+SHA-256 before running anything from it, prints the progress, and ends with `READY`
+(exit code 0) or `FAILED` and why (exit code 1). It needs network access, takes a few
+minutes, and is safe to run again. On Windows, run
+`powershell -NoProfile -ExecutionPolicy Bypass -File "<installed folder>\scripts\setup.ps1"`
+instead. `claude plugin list --json` prints the installed folder as
 `installPath`; the cache keeps one folder per version. Without this step the
 first conversation only downloads and the tools appear in the one after; with
 it the next conversation has every tool. The install prompt on the Effect House
@@ -74,7 +73,7 @@ Codex:
 ```bash
 codex plugin marketplace add tiktok/effect-house-agent-plugins
 codex plugin add ehai@effect-house
-node ~/.codex/plugins/cache/effect-house/ehai/<version>/scripts/start.mjs setup
+sh ~/.codex/plugins/cache/effect-house/ehai/<version>/scripts/setup.sh
 ```
 
 The third command is the same first-time setup; `codex plugin add --json`
@@ -111,10 +110,12 @@ the specialized guides as the work needs them; there is no topic menu to choose.
 
 ## What runs on your machine
 
-- Two MCP servers the host starts with its own `node`: `ehai` and `eh`, described
-  below. The public repository holds only two small starters as code,
-  `scripts/start.mjs` and, for a Mac with no Node, `scripts/setup.sh`; everything they
-  run ships in the runtime.
+- Two MCP servers the host starts through `scripts/start` (`start.cmd` on Windows):
+  `ehai` and `eh`, described below. The public repository holds only small starters as
+  code, those two, `scripts/start.mjs`, and the setup entries `scripts/setup.sh` and
+  `scripts/setup.ps1`; everything they run ships in the runtime, including the official
+  Node.js they run it on, `~/.ehai/runtime/current/lib/node_modules/ehai/bin/node`
+  (`node.exe` on Windows).
 - A local daemon (`ehai serve`) that listens on `127.0.0.1` only. It serves the
   Studio page and the preview and runs the Effect House account actions.
 - One Effect House engine process per host session, started by the daemon and
@@ -125,7 +126,7 @@ the specialized guides as the work needs them; there is no topic menu to choose.
   labels its change history with it); a turn record that counts each turn and
   its prompt's length and hands the prompt and the turn's end to the local
   engine, which keeps only the length. Prompt text does not leave your machine.
-  Each runs `node` on one script, with no shell. None runs before a tool call,
+  Each runs one script on the runtime's Node through `scripts/start`. None runs before a tool call,
   and none approves, denies or changes a permission: your host's own permission
   rules apply.
 <!-- hooks:end -->
@@ -144,8 +145,8 @@ only when its sha256 equals the one in this package, no link in its archive lead
 and, on macOS, the engine's code signature verifies. One install serves every
 session and both hosts, and an update downloads again only when the engine
 changed. Downloads honour `HTTPS_PROXY` and `NO_PROXY`. The first runtime download uses
-the system's `curl` and its certificates; the others also honour
-`NODE_EXTRA_CA_CERTS`. Until it finishes, both servers offer one placeholder
+the system's `curl` and its certificates, and nothing from it runs before the whole
+archive matches its sha256; the others also honour `NODE_EXTRA_CA_CERTS`. Until it finishes, both servers offer one placeholder
 tool, `ehai_installing`, which says how far setup is or why it stopped.
 
 ## Network, sign-in and privacy

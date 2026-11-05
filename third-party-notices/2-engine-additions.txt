@@ -9,7 +9,7 @@ Source: https://github.com/libvips/libvips
 
 libvips is a separate shared library that the sharp addon links dynamically; it is not compiled into any other file.
 You may replace it with your own build of a compatible libvips. In the engine folder it is
-  macOS:   CloudEH Engine.app/Contents/Resources/cloudeh-macos/dist/libvips-cpp.42.dylib
+  macOS:   EHAIEngine.app/Contents/Resources/cloudeh-macos/dist/libvips-cpp.42.dylib
   Windows: cloudeh-windows/dist/libvips-42.dll and libvips-cpp.dll (with libglib-2.0-0.dll and libgobject-2.0-0.dll)
 and in the plugin runtime it is node_modules/@img/sharp-libvips-<platform>/lib (Windows: node_modules/@img/sharp-win32-x64/lib).
 The full plugin keeps the engine folder under runtime/; a thin install downloads the same engine into its engine store.
@@ -33,7 +33,7 @@ Source: https://lame.sourceforge.io/
 
 libmp3lame is a separate shared library that the engine's media libraries link dynamically; you may replace it with your own build.
 In the engine folder it is
-  macOS:   CloudEH Engine.app/Contents/Resources/cloudeh-macos/dist/libmp3lame.0.dylib
+  macOS:   EHAIEngine.app/Contents/Resources/cloudeh-macos/dist/libmp3lame.0.dylib
   Windows: cloudeh-windows/dist/libmp3lame-0.dll
 LAME is licensed under the GNU Library General Public License version 2 or (at your option) any later version;
 the GNU Lesser General Public License version 2.1 below is that later version. Source: https://lame.sourceforge.io/.

@@ -5,7 +5,8 @@ The EffectHouse AI plugin contains, and downloads or runs, third-party software.
   1. The engine: Effect House Open Source Software Notice
   2. Engine additions: libraries the Effect House engine ships that section 1 does not list
   3. Plugin runtime npm packages
-  4. First-party packages (below).
+  4. Node.js 22.17.0, which the plugin runtime ships (its LICENSE)
+  5. First-party packages (below).
 
 The license texts are in these files, in order (third-party-notices/ beside this file):
 
@@ -13,6 +14,7 @@ The license texts are in these files, in order (third-party-notices/ beside this
   third-party-notices/2-engine-additions.txt  2. Engine additions: libraries the Effect House engine ships that section 1 does not list
   third-party-notices/3-npm-packages-1.txt    3. Plugin runtime npm packages (part 1 of 2)
   third-party-notices/3-npm-packages-2.txt    3. Plugin runtime npm packages (part 2 of 2)
+  third-party-notices/4-nodejs.txt            4. Node.js 22.17.0, which the plugin runtime ships (its LICENSE)
 
 Section 1 is Effect House's own Open Source Software Notice, reproduced verbatim from Effect House (the notice
 Effect House desktop shows under About > Licenses); where it spans several parts, the parts joined in order are the notice.
@@ -176,10 +178,10 @@ Packages without a license file of their own:
   undici-types@5.26.5: MIT, ships no license file; its license is published at https://github.com/nodejs/undici
 
 ================================================================================
-4. First-party packages
+5. First-party packages
 ================================================================================
 
   @logsdk-tt/node@4.0.0-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
   @logsdk-tt/node-plugin-http@4.0.3-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
   @logsdk-tt/node-utils@4.0.0-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
-  ehai@0.0.128: downloaded runtime; see the license included in its distribution
+  ehai@0.0.129: downloaded runtime; see the license included in its distribution

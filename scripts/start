@@ -1,0 +1,6 @@
+#!/bin/sh
+# Copyright (c) 2026 ByteDance Ltd. and/or its affiliates
+# SPDX-License-Identifier: Apache-2.0
+node=${EHAI_HOME:-$HOME/.ehai}/runtime/current/lib/node_modules/ehai/bin/node
+[ -x "$node" ] || node=node
+exec "$node" "$(CDPATH='' cd -- "${0%/*}" && pwd)/start.mjs" "$@"
