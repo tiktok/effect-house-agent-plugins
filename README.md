@@ -31,13 +31,13 @@ send the matching prompt:
 Codex:
 
 ```text
-Follow https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/codex_install_update.md to install/update and set up EffectHouse AI, then fork this chat and continue there if supported.
+Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/codex_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then fork this chat and continue there if supported.
 ```
 
 Claude Code:
 
 ```text
-Follow https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/claude_install_update.md to install/update and set up EffectHouse AI, then fork this session and continue there if supported.
+Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/claude_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then fork this session and continue there if supported.
 ```
 
 Claude Code:
