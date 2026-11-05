@@ -77,11 +77,35 @@ installation separate from incomplete setup in the status you report.
 tools, that a running daemon has upgraded, or that TikTok sign-in is complete.
 Do not stop an existing daemon or log out an account just to install an update.
 
-Report the verified plugin version and setup result. Tell the user to start a
-new Codex chat to load the plugin. If the user explicitly requested creating or
-forking a chat and the host supports it, do so after successful setup and carry
-over their request, installed version, setup result, and pending sign-in; do not
-claim a handoff succeeded unless the new chat was created and received that context.
-In the fresh chat, use the installed EffectHouse AI skill to check the session
-and complete TikTok QR sign-in only if required. Do not reinstall for a stale
-tool list or report sign-in as complete without a successful check.
+When the user's installation prompt requests a fork, that request also authorizes
+the continuation message and opening the fork. Do not ask them to request the
+handoff again or finish with only "start a new chat" before checking host tools.
+
+After successful setup, discover the host's `fork_thread`, `send_message_to_thread`
+and `navigate_to_codex_page` tools and read their current schemas. If available
+and the user requested the handoff:
+
+1. Fork the current chat in the same directory, using the tool's current-chat
+   defaults rather than guessing a source ID.
+2. Send the continuation to the returned child with `send_message_to_thread`.
+   Include the user's original goal, verified plugin version, exact installed
+   path, `READY` and exit code 0, any known blockers, and pending sign-in.
+   Ask it to use the installed EffectHouse AI skill to check the session, complete
+   TikTok QR sign-in only if required, and resume the user's goal. If no creative
+   goal was supplied, introduce EffectHouse AI and ask what they want to make.
+   Do not repeat successful installation or create an empty project for onboarding.
+3. Open that child with `navigate_to_codex_page`.
+4. Report handoff success only after the child was created, received the message
+   and was opened. Do not claim sign-in or tool availability is verified yet.
+
+If a required tool is unavailable, or a tool fails, name the missing capability
+or failed step. Never substitute a shell-spawned CLI process for a visible chat.
+If a child already exists, preserve its reference and recover that handoff rather
+than creating duplicates. Give the user its link when available. If no child was
+created, tell the user to start a new Codex chat and provide the continuation
+prompt above. If the user did not request a handoff, give that manual continuation
+without creating or messaging another chat.
+
+Keep installation, setup, chat handoff and sign-in as separate reported states.
+A fresh chat must verify its tools and session; do not reinstall for a stale tool
+list or report sign-in as complete without a successful check.

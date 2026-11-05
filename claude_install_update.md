@@ -98,13 +98,35 @@ installation separate from incomplete setup in the status you report.
 new tools, that a running daemon has upgraded, or that TikTok sign-in is complete.
 Do not stop an existing daemon or log out an account just to install an update.
 
-Report the verified plugin version, setup result and automatic-update setting.
-In a terminal session, tell the user to type `/reload-plugins`; in a desktop
-session, direct them to a new or forked session. If they explicitly requested an
-automatic new session or fork and the host supports it, create it after setup
-and carry over their request, installed version, setup result and pending sign-in.
-Otherwise provide those details as a short continuation prompt. Do not claim a
-handoff succeeded unless it actually did. After reloading, use the installed
-EffectHouse AI skill to check the session and complete TikTok QR sign-in only if
-required. Do not reinstall for a stale tool list or report sign-in as complete
-without a successful check.
+When the user's installation prompt requests a fork, that request also authorizes
+the continuation message and opening the fork. Do not ask them to request the
+handoff again. After successful setup, inspect or discover the current host's
+native session tools before choosing a manual fallback; do not assume that a
+desktop UI's Fork button is exposed as an assistant tool.
+
+If the host exposes tools to fork, send a follow-up and open the result, and the
+user requested that handoff, use those tools in that order. Carry over the user's
+original goal, verified plugin version, exact install path, `READY` and exit code 0,
+automatic-update setting, known blockers and pending sign-in. Ask the fork to use
+the installed EffectHouse AI skill to check the session, complete TikTok QR sign-in
+only if required, and resume the user's goal. If no creative goal was supplied,
+introduce EffectHouse AI and ask what they want to make. Do not repeat successful
+installation or create an empty project for onboarding.
+
+Report handoff success only after the new session was created, received the
+continuation and was opened. If a step fails after creating a session, preserve
+its reference and recover it rather than making duplicates. Give the user its
+link when available and explain which step remains incomplete.
+
+If no native session tools are exposed, explicitly say that this host does not
+provide an assistant-callable fork/send/open capability. Do not pretend a shell
+command opening another CLI is a fork in the user's desktop app, and do not use
+background agents as a replacement. In a terminal session, tell the user to type
+`/reload-plugins`; in a desktop session, tell them to use its Fork or New session
+control. Provide a short continuation prompt containing the context above.
+Use the same manual fallback if the user did not request an automatic handoff.
+
+Report installation, setup, automatic updates, handoff and sign-in separately.
+After reloading, the installed EffectHouse AI skill must check the session and
+complete TikTok QR sign-in only if required. Do not reinstall for a stale tool
+list or report sign-in as complete without a successful check.
