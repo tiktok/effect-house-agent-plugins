@@ -13,6 +13,16 @@ do not use WSL for a Windows desktop app. If the host or CLI is unavailable,
 report the missing prerequisite and stop. Use the execution environment's
 required permissions and preserve existing settings and projects.
 
+Before installation commands, check the execution environment's network and
+write permissions. Marketplace registration writes outside the project folder.
+Claude Code needs access to its plugin directories and settings; setup also
+writes to `<EHAI_HOME>` (default `~/.ehai`).
+If required access is restricted, request it through the host's supported approval
+mechanism before the affected command. If a command fails specifically because
+of permissions, retain the error and retry that step only after access is granted.
+If permission is denied or unavailable, report the blocked phase without undoing
+completed installation or changing sandbox settings.
+
 Read `claude plugin marketplace list --json`. If `effect-house` exists, verify
 that it uses `tiktok/effect-house-agent-plugins` on GitHub and tracks `main`
 (an unspecified ref uses the repository default branch). Accept equivalent
@@ -48,20 +58,36 @@ claude plugin update ehai@effect-house
 ```
 
 Require successful exit codes. Read `claude plugin list --json` again and obtain
-the applicable entry's `version` and exact `installPath`. Fetch and parse:
+the applicable entry's `version` and exact `installPath`. Re-read
+`claude plugin marketplace list --json` and obtain the verified `effect-house`
+entry's `installLocation` as `<marketplaceRoot>`.
 
-```text
-https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/.claude-plugin/plugin.json
+Verify the release using Git, not a web search result or browser-rendered copy
+of the mutable raw `main` URL, which may be stale:
+
+```sh
+git ls-remote https://github.com/tiktok/effect-house-agent-plugins.git refs/heads/main
+git -C "<marketplaceRoot>" rev-parse HEAD
 ```
 
-Require the listed version and `<installPath>/.claude-plugin/plugin.json` to
-match that remote version, and confirm the plugin is enabled for this session's
-scope. If disabled, enable `ehai@effect-house` in the intended scope using the
-CLI's supported `plugin enable` command. Do not hardcode a release number or
-search old cache folders for an alternative path. If versions differ, refresh,
-update and re-read the path once more in case a release arrived during installation.
-If they still differ, or a command or manifest fetch fails, report the exact step
-and error and stop. Do not clear caches or uninstall a working copy to fix a mismatch.
+Take `<mainSha>` from the exact `refs/heads/main` result and require the
+marketplace's HEAD to equal it. Read the manifest from that checked commit:
+
+```sh
+git -C "<marketplaceRoot>" show "<mainSha>:.claude-plugin/plugin.json"
+```
+
+Parse its JSON version and require both the listed version and
+`<installPath>/.claude-plugin/plugin.json` to match. Confirm the plugin is enabled
+for this session's scope; if disabled, enable `ehai@effect-house` in the intended
+scope using the CLI's supported `plugin enable` command. Do not hardcode a release
+number or search old cache folders for another path. If the SHA or versions differ,
+refresh and update once more, then re-read the remote SHA, marketplace root,
+manifest and install path in case a release arrived during installation. If they
+still differ, report the observed SHAs and versions and stop. If a Git or CLI
+command fails, report its error; never treat an unreadable manifest as a version
+mismatch or use a cached web result instead. Do not clear caches or uninstall a
+working copy to fix a mismatch.
 
 Set `extraKnownMarketplaces.effect-house.autoUpdate` to the JSON boolean `true`
 in `~/.claude/settings.json`. Merge into the existing marketplace entry, preserving
@@ -73,24 +99,54 @@ updates as unconfigured separately from the completed installation.
 
 ## 3. Complete setup
 
-Using only the exact `installPath` from the final successful inventory, check
-for Node.js 20 or later and run:
+Use only the exact `installPath` from the final successful installation result.
+Replace placeholders below with that path and quote them for the native shell.
+Detect Node in this shell; do not conclude that Node is absent from the whole
+machine just because this shell's PATH does not contain it.
 
-```sh
-node "<installPath>/scripts/start.mjs" setup
-```
+- If Node.js 20 or later is available, use its resolved executable to run:
 
-Replace the placeholder with the actual path and quote it for the native shell.
-If Node is missing on macOS, use the installed `scripts/setup.sh` as documented
-in the installed README; it also configures Node discovery and requires reopening
-the app. On Windows, report the Node prerequisite and do not claim setup succeeded.
+  ```sh
+  node "<installPath>/scripts/start.mjs" setup
+  ```
 
-Setup may download about 600 MB and take several minutes. Keep the same process
-running, check its progress with waits of at most 60 seconds, and wait for both
-its final output and exit code. Success requires a `READY:` line and exit code 0.
-On `FAILED:`, a nonzero exit, or exit without `READY:`, report setup as incomplete
-and retain the error. Do not launch duplicate setup processes. Keep completed
-installation separate from incomplete setup in the status you report.
+- If Node is not found on Apple silicon macOS, run the shipped no-Node entrypoint
+  directly; it does not require Node or a separate Node installation:
+
+  ```sh
+  /bin/sh "<installPath>/scripts/setup.sh"
+  ```
+
+  This downloads the runtime and engine, configures `~/.ehai/bin/node` (or
+  `<EHAI_HOME>/bin/node`) and its login-profile PATH entry. Tell the user what it
+  configures. This entrypoint may return `RUNNING:` with exit code 0 while its
+  background worker continues. Wait about 30 seconds and invoke the same shell
+  command again to query/resume that worker; do not treat `RUNNING:` as completion
+  or launch another installation. Continue until `READY:` or `FAILED:`. A
+  `FAILED:` line is a failure even if the script exits with code 0.
+  After the shell reports `READY:`, verify the configured Node executable is usable
+  and version 20 or later, then use that absolute Node path to run the installed
+  `scripts/start.mjs setup` and obtain the final `READY:` confirmation. If the
+  bundled Node cannot be found or run, report that exact step as incomplete.
+  The desktop app may need a full restart to discover the new Node; forking alone
+  does not establish that its PATH has refreshed. Include this in the handoff.
+
+- If Node is older than 20, or Node is missing on Windows, report the Node.js
+  20+ prerequisite and resume setup after it is available. Do not claim success
+  or repeat plugin installation for a missing runtime prerequisite.
+
+Setup may download about 600 MB and take several minutes. For the Node setup,
+keep the same process running, check its progress with waits of at most 60 seconds,
+and wait for both its final output and exit code. For the shell entrypoint, follow
+its `RUNNING:` polling rules above. Final setup success requires the Node setup's
+`READY:` line and exit code 0.
+On `FAILED:` or a nonzero exit, report setup as incomplete and retain the error.
+A Node setup process that exits without `READY:` is also incomplete; a shell
+status query returning `RUNNING:` must continue polling instead. Resume only the
+unfinished step after resolving its cause; do not repeat registration and
+installation when release verification already passed.
+Do not launch duplicate setup processes. Keep completed installation separate
+from incomplete setup in the status you report.
 
 ## 4. Reload and finish
 
