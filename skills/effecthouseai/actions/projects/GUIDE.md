@@ -56,7 +56,7 @@ when an engine holds it, `open` (with `thisSession`).
 3. `eh.project.open(<absolute path>)`, then `eh.project.describe()` before
    changing anything.
 4. `studio_open {project: <path>}` to show it (the preview guide,
-   `../preview/SKILL.md`, has the entrance rules).
+   `../preview/GUIDE.md`, has the entrance rules).
 5. Check: `eh.project.status()` now reports the new `path`.
 
 ## New project

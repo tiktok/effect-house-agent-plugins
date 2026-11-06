@@ -25,7 +25,7 @@ description: The user's PUBLISHED effects on Effect House — "how are my effect
 > A read that answers `sign_in_required` with `signIn: true` means the same thing.
 
 Everything here is about effects already SUBMITTED to Effect House. Making or
-submitting one is the publish guide (`../publish/SKILL.md`).
+submitting one is the publish guide (`../publish/GUIDE.md`).
 
 **Which effect?** Resolve a name with `effects_list {query: <name>}` (`status`
 narrows it; newest first). One match → use its `id`. Several → a numbered list

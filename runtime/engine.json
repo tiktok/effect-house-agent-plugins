@@ -5,40 +5,40 @@
       "kind": "engine",
       "platform": "darwin",
       "arch": "arm64",
-      "revision": "44dceca9fb503703b67bac2d2ef8c7e3fff74340",
-      "sdkRevision": "cbb6a7e5b4660faaeef33907d01de339addbf62b",
+      "revision": "2c1c5deffe592533964c501f5a4f62541bf44b89",
+      "sdkRevision": "c52e0c19f9661404e9280e92ada7e725f1406b96",
       "contractHash": "sha256:18a2a95255e0d84e1533c1530337db58506b1f55cd269420365edb5a5a629019",
-      "hostPluginHash": "sha256:10521e6ad84a9fb99b567734a7183ce2b1800a1da6c40a39a6932e077347d449",
+      "hostPluginHash": "sha256:058da363afcad16bd7726941a2b4d9339ec1998fd9adbee9d12c1dfbb5b6c6e4",
       "ehVersion": "5.16.0",
-      "file": "cloudeh-darwin-arm64-44dceca9fb50.tar.xz",
-      "sha256": "e3d7a8ca89fed89ae7fe2341c73bb6ea6e31f72ea7c14c72d89221763be62729",
-      "bytes": 492858708,
+      "file": "cloudeh-darwin-arm64-2c1c5deffe59.tar.xz",
+      "sha256": "447749eb478365f4c53069b2697c0ead81947096da0c5c0d1b700b1d30ae025a",
+      "bytes": 493071076,
       "format": "tar.xz",
       "manifest": "EHAIEngine.app/Contents/Resources/cloudeh-macos/dist/cloud-eh.json",
-      "files": 11216,
-      "unpackedBytes": 922966943,
+      "files": 11221,
+      "unpackedBytes": 926163467,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/44dceca9fb503703b67bac2d2ef8c7e3fff74340/ehai-engine/cloudeh-darwin-arm64-44dceca9fb50.tar.xz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/2c1c5deffe592533964c501f5a4f62541bf44b89/ehai-engine/cloudeh-darwin-arm64-2c1c5deffe59.tar.xz"
       ]
     },
     "win32-x64": {
       "kind": "engine",
       "platform": "win32",
       "arch": "x64",
-      "revision": "44dceca9fb503703b67bac2d2ef8c7e3fff74340",
-      "sdkRevision": "cbb6a7e5b4660faaeef33907d01de339addbf62b",
+      "revision": "2c1c5deffe592533964c501f5a4f62541bf44b89",
+      "sdkRevision": "c52e0c19f9661404e9280e92ada7e725f1406b96",
       "contractHash": "sha256:18a2a95255e0d84e1533c1530337db58506b1f55cd269420365edb5a5a629019",
-      "hostPluginHash": "sha256:10521e6ad84a9fb99b567734a7183ce2b1800a1da6c40a39a6932e077347d449",
+      "hostPluginHash": "sha256:058da363afcad16bd7726941a2b4d9339ec1998fd9adbee9d12c1dfbb5b6c6e4",
       "ehVersion": "5.16.0",
-      "file": "cloudeh-win32-x64-44dceca9fb50.tar.gz",
-      "sha256": "5f2d90371a0bae1dc2a4c22aa1f97347a87f7fa30a817916e91806a5c4310886",
-      "bytes": 607408535,
+      "file": "cloudeh-win32-x64-2c1c5deffe59.tar.gz",
+      "sha256": "ee89f69c24a77ab7226a97fd5d8f17e55cc77e760259064d3e8204f7a5f19507",
+      "bytes": 607944699,
       "format": "tar.gz",
       "manifest": "cloudeh-windows/dist/cloud-eh.json",
-      "files": 11246,
-      "unpackedBytes": 1012595663,
+      "files": 11251,
+      "unpackedBytes": 1015855807,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/44dceca9fb503703b67bac2d2ef8c7e3fff74340/ehai-engine/cloudeh-win32-x64-44dceca9fb50.tar.gz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/2c1c5deffe592533964c501f5a4f62541bf44b89/ehai-engine/cloudeh-win32-x64-2c1c5deffe59.tar.gz"
       ]
     }
   }

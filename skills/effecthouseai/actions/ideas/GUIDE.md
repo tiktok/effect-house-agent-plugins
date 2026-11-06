@@ -3,8 +3,9 @@ name: ideas
 description: Ideas and targets for an effect — "what's trending that I could
   build", "give me an effect idea", "any challenges right now / what can I
   win", "did my effect get into the challenge", "find a song for this effect",
-  "find a 3D crown". trends_list, challenges_list, sounds_search,
-  library_browse, models_search and models_import; all read-only.
+  "recommend some Christmas songs", "find a 3D crown". trends_list,
+  challenges_list, sounds_search, sounds_show, library_browse, models_search
+  and models_import; all read-only.
 ---
 # ideas — trends, challenges, sounds and assets
 
@@ -38,9 +39,9 @@ suits, the example video's `views` and its `tiktokUrl`.
 - Offer three to five, numbered, each with one line saying what effect would
   answer it. Name the trend, never the id; link `tiktokUrl` for the example.
 - When the user picks one, it is the brief for a NEW effect: build it in a new
-  project (the projects guide, `../projects/SKILL.md`), and keep the trend's
+  project (the projects guide, `../projects/GUIDE.md`), and keep the trend's
   `id` — it goes in as `trendId` when the effect is published (the publish
-  guide, `../publish/SKILL.md`).
+  guide, `../publish/GUIDE.md`).
 - Do not add popularity claims beyond the `views` given.
 - Trends come before making an effect: offer them when the user wants to make
   one with no clear idea, or asks for ideas or what is trending. Never call
@@ -74,26 +75,29 @@ account's entries: `myEntries` (name and review status) and `myEntryCount`.
   `entriesError` means the entries could not be read: say so, never "none".
 - Prizes and payouts are paid by Effect House; nothing here claims them.
 
-## Sounds — the effect's default sound
+## Sounds — songs to listen to, and the effect's default sound
 
 The default sound is part of the project, so choose it BEFORE the publish dry
-run, and run the dry run again after changing it.
+run, and run the dry run again after changing it. A request for songs alone
+("find me some Christmas songs") is steps 1 to 3, without choosing one.
 
 1. `sounds_search {query?, source?, withLyrics?, limit?}` — the tabs of Effect
    House's sound library: `recommended` (the default without a query),
    `favorites` (the user's hearted sounds), `lyrics`, `search` (the default
    with a query). Rows: `id`, `title`, `author`, `durationSec`, `hasLyrics`,
    `favorite`. `withLyrics: true` keeps songs with usable lyrics — what a
-   lyrics effect needs.
-2. Offer three to five, with author and length, and ask which.
-3. Select it in the `eh` server's `run` tool:
-   `eh.sounds.select(id, {startTime, requireLyrics: false})` — `startTime` in
-   seconds within the clip (up to `durationSec`), e.g. where the chorus
-   starts. Without `requireLyrics: false` a song with no lyrics is refused;
-   a lyric effect keeps the default, so its lyrics reach the preview.
-4. Chat cannot play audio. To listen first, the user opens the Studio's
-   Publish window → Default sound, which plays each one; hearting a favourite
-   happens there too.
+   lyrics effect needs. Little found? Search again in English.
+2. Offer three to eight that fit, with author and length.
+3. Chat cannot play audio: `sounds_show {title, sounds: [{id, note}]}` puts
+   your picks, in order, on the Sounds page, a card each that plays its song
+   (`note`: why it fits; it and `title` in the user's language). Open its
+   `pageUrl` as its `note` says. There the user moves a song's start (0 is
+   the clip's chorus) and presses Use: this project's default sound.
+4. When the user names one in chat instead, select it in the `eh` server's
+   `run` tool: `eh.sounds.select(id, {startTime, requireLyrics: false})` —
+   `startTime` in seconds within the clip (up to `durationSec`), e.g. where
+   the chorus starts. Without `requireLyrics: false` a song with no lyrics is
+   refused; a lyric effect keeps the default, so its lyrics reach the preview.
 
 ## Library assets and 3D models
 

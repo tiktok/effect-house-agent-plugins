@@ -118,7 +118,7 @@ submission is a NEW effect on their account. When the user says "update",
 "new version" or "resubmit", or the project is a re-edit of something they
 already published, ask which effect it is a new version of — never guess — and
 take its id from `effects_list {query: <name>}` (the effects guide,
-`../effects/SKILL.md`, resolves names). Then pass `effectToUpdate`:
+`../effects/GUIDE.md`, resolves names). Then pass `effectToUpdate`:
 
 - *active / launched* → an update: the new version goes to review and the live
   one keeps running until it passes ("Update of X (vN → vN+1)").
@@ -165,7 +165,7 @@ ask for the rest:
   `description`, `trendId`, `challengeId`). Shown under the field on the card and
   gone once the user changes that field; never sent to Effect House.
 - Trends before making an effect, and what challenges are open when the user
-  asks, are the ideas guide (`../ideas/SKILL.md`).
+  asks, are the ideas guide (`../ideas/GUIDE.md`).
 
 **The default sound** is part of the project, not a field of this call: choose
 it BEFORE the dry run with `sounds_search`, then
@@ -227,7 +227,7 @@ hint, category and tags.
 Effect House's own submission quotas for the account; tell the user when to try
 again rather than retrying.
 
-**On a phone** (the preview guide, `../preview/SKILL.md`). Phone preview may
+**On a phone** (the preview guide, `../preview/GUIDE.md`). Phone preview may
 be refused by Effect House's risk check (`blocked: true`, code `risk_blocked`):
 it refuses the package, not the account; when it works, `effect_preview`
 returns `previewUrl` with its QR code — show the QR code to scan with TikTok on

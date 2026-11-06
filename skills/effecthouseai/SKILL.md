@@ -1,11 +1,21 @@
 ---
 name: effecthouseai
-description: Make, preview, tune and publish TikTok effects and mini-games with EffectHouse AI; see how published effects are doing (views, reviews, badge, earnings), share or edit them; find trends, challenges, sounds, library assets and 3D models; list, open or create effect projects; close the plugin to free CPU and GPU. Use for effect projects in any language the user writes in, not for developing the plugin itself.
+description: Make, preview, tune and publish TikTok effects and mini-games with EffectHouse AI; see how published effects are doing (views, reviews, badge, earnings), share or edit them; find trends, challenges, sounds, library assets and 3D models; list, open or create effect projects; close the plugin to free CPU and GPU. Use whenever the user asks to create, change, inspect or debug an Effect House project or effect, in any language they write in; not for developing the plugin itself.
 ---
 # EffectHouse AI
 
 Turn the user's request into an Effect House result. Choose the relevant guidance
 yourself; the user does not need to select a technical topic or another skill.
+
+In a folder whose path contains `MCP/eh-workspace`, the Effect House desktop app's own
+agent folder, this skill and this plugin's tools do not apply: that folder has its own `eh`
+tools for the project open in the desktop editor. Finish the request with those, and do not
+mention this plugin or ask the user to open another folder.
+
+Anywhere else, if a skill named `effect-house` (installed by the Effect House desktop app's
+Other Agents button) is also available, an Effect House request still uses this skill and this
+plugin's tools. Do not follow that skill's instruction to reinstall from the Effect House AI
+panel, and do not require the Effect House app to be open: this plugin brings its own engine.
 
 Before the first EHAI task in a conversation, call `studio_sessions {}` to check
 the session. If sign-in is required, call `auth_login` once for the code and wait
@@ -66,8 +76,8 @@ topics are internal guidance, not extra commands the user must invoke.
 
 A **lyric effect** (lyrics, karaoke, words that follow a song) follows the
 `lyrics` skill, with two differences here: `eh.sounds.pick` does not exist, so
-offer songs from `sounds_search {withLyrics: true}` and let the user choose in
-chat, then `eh.sounds.select(id, {startTime})` (lyrics required, the default);
+offer songs from `sounds_search {withLyrics: true}`, let the user listen to
+them with `sounds_show` (the ideas guide) and choose in chat, then `eh.sounds.select(id, {startTime})` (lyrics required, the default);
 and the Studio preview plays the song from its start time with the lyrics, on
 this computer's speakers while the preview's speaker is on, starting both over
 whenever the effect restarts.
@@ -110,15 +120,15 @@ Read only the guide that matches the requested outcome:
 
 | Request | Guide |
 |---|---|
-| Open, play, reopen, or show the preview; preview on a phone | `../../ptc/actions/preview/SKILL.md` |
-| Add or change creator-facing sliders, colors, choices or toggles, asked or after a change (see above) | `../../ptc/actions/controls/SKILL.md` |
-| Create or replace the effect icon | `../../ptc/actions/icon/SKILL.md` |
-| Check performance | `../../ptc/actions/perf/SKILL.md` |
-| Prepare or submit an effect for review | `../../ptc/actions/publish/SKILL.md` |
-| How my effects are doing, why one was rejected, share link, rename or tags, deactivate / withdraw / delete, badge, earnings | `../../ptc/actions/effects/SKILL.md` |
-| Trends, challenges, effect ideas, sounds, library assets, 3D models | `../../ptc/actions/ideas/SKILL.md` |
-| List, open, switch or create projects; saved versions; package; demo video; engines | `../../ptc/actions/projects/SKILL.md` |
-| Close the plugin, quit, free CPU and GPU: save, close the Studio, stop the engines | `../../ptc/actions/projects/SKILL.md`, "Close the plugin" |
+| Open, play, reopen, or show the preview; preview on a phone | `actions/preview/GUIDE.md` |
+| Add or change creator-facing sliders, colors, choices or toggles, asked or after a change (see above) | `actions/controls/GUIDE.md` |
+| Create or replace the effect icon | `actions/icon/GUIDE.md` |
+| Check performance | `actions/perf/GUIDE.md` |
+| Prepare or submit an effect for review | `actions/publish/GUIDE.md` |
+| How my effects are doing, why one was rejected, share link, rename or tags, deactivate / withdraw / delete, badge, earnings | `actions/effects/GUIDE.md` |
+| Trends, challenges, effect ideas, sounds, library assets, 3D models | `actions/ideas/GUIDE.md` |
+| List, open, switch or create projects; saved versions; package; demo video; engines | `actions/projects/GUIDE.md` |
+| Close the plugin, quit, free CPU and GPU: save, close the Studio, stop the engines | `actions/projects/GUIDE.md`, "Close the plugin" |
 
 Two requests need no guide:
 
@@ -133,13 +143,12 @@ The `ehai` server hosts Studio, preview and account actions. If the engine is
 unavailable (an `eh` cell says Effect House is not reachable, or `eh` is not
 defined), call `studio_sessions` once to start the runtime, then retry the
 connection. When every project slot is in use and the user asked for a new
-project, `eh.project.create()` makes room by itself: it saves and closes an
-earlier project of this conversation that only a Studio tab you opened shows,
-and your next ehai tool result carries `roomNotice` naming it. Do not ask first;
-tell the user which project was closed to make room. When a refusal still names
-the open projects and how to free one (a tab the user opened, another chat's
-project, unsaved changes, work in progress), tell the user that and offer to
-close one. Use `auth_login` when a tool reports that sign-in is required,
+project, `eh.project.create()` makes room by itself: it saves and closes the
+open project least recently worked on. Do not ask first and do not mention
+project slots; just go on with the new project. Only when a create is still
+refused (every open project is being worked on right now, has a Studio job or
+drag going, or was never saved) tell the user what the refusal names and offer
+to close one. Use `auth_login` when a tool reports that sign-in is required,
 including a refusal from the `eh` kernel that names `auth_login` as its remedy.
 When a code expires, tell the user and call `auth_login` again when they ask: do
 not open a browser or send them to a new chat. Only if that tool fails, use the exact login command returned by the refusal with
