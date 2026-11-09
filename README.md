@@ -12,9 +12,11 @@ upgrades an older project, it keeps a copy of the original in the project's `.eh
 
 ## Install
 
-Send your assistant the prompt for your host. It installs or updates the plugin and
-runs the first-time setup (about 600 MB, once). Then ask, for example, "Make an effect
-that puts sparkles around my face" or "How are my published effects doing?"
+In the Codex app or the Claude app, choose or create a workspace folder and trust it
+when asked; we recommend switching to Full access before your first message, so you
+do not approve every step. Then paste the prompt for your host (in Codex, not
+ChatGPT). It installs or updates the plugin and runs the first-time setup (about
+600 MB, once); start a new session when it finishes, so the plugin loads.
 
 Codex:
 
@@ -41,6 +43,18 @@ Then run the setup in the installed folder, `sh scripts/setup.sh` (on Windows
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\setup.ps1`), until it
 says `READY`, and start a new conversation (in Codex a new task). In Claude Code,
 turn on auto-update for the `effect-house` marketplace under `/plugin`, Marketplaces.
+
+## Sign in
+
+The first time you use the plugin, the agent shows a QR code in the chat. In the
+TikTok app, tap Profile, then the menu (☰), then Your QR code; tap the scan button,
+scan the code and confirm on your phone. If the code expires, ask for a new one.
+
+## Try it
+
+- "Create an iridescent ribbon effect with glowing sparkles floating around my face."
+- "Make a 2D game where I move my head to catch falling stars in a dreamy night sky."
+- "Create a cute pink pig hood with little floppy ears that follows my head."
 
 ## Updates
 
@@ -80,6 +94,10 @@ too. Then remove the plugin with `claude plugin uninstall ehai@effect-house` or
 
 ## Troubleshooting
 
+- The agent says it has no Effect House tools: start a new session; the plugin only
+  loads in a session started after you install or update it.
+- Tool calls fail with "requires approval": the permission mode changed while the
+  agent was working; send your message again.
 - Setup says why it stopped. A failed download resumes on the next run; behind a
   proxy set `HTTPS_PROXY`, and `NODE_EXTRA_CA_CERTS` for one that re-signs HTTPS.
 - `ehai_update_required`: update with the command it names, then start a new conversation.

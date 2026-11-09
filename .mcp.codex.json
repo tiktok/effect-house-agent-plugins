@@ -15,7 +15,7 @@
         "EHAI_HOME"
       ],
       "env": {
-        "EHAI_PLUGIN_VERSION": "0.0.131",
+        "EHAI_PLUGIN_VERSION": "0.0.132",
         "EHAI_PLUGIN_DISTRIBUTION": "public",
         "EHAI_UPDATE_MANIFEST_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/.claude-plugin/plugin.json",
         "EHAI_UPDATE_SUPPORT_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/support.json",
@@ -41,7 +41,7 @@
         "EHAI_HOME"
       ],
       "env": {
-        "EHAI_PLUGIN_VERSION": "0.0.131",
+        "EHAI_PLUGIN_VERSION": "0.0.132",
         "EHAI_PLUGIN_DISTRIBUTION": "public",
         "EHAI_UPDATE_MANIFEST_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/.claude-plugin/plugin.json",
         "EHAI_UPDATE_SUPPORT_URL": "https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/support.json",
