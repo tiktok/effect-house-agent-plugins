@@ -1,0 +1,26 @@
+name: Feature request or feedback
+description: Something you wish EffectHouse AI did, or did differently.
+title: "Feature request: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What you want
+      description: What the plugin should do, in a sentence or two. Leave out account details.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why / what it would let you do
+      description: The effect or workflow this is for, and what you do today instead.
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version
+      description: The "version" in .claude-plugin/plugin.json of the installed plugin, if relevant.
+    validations:
+      required: false
