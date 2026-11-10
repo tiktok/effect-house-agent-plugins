@@ -5,30 +5,30 @@
       "kind": "runtime",
       "platform": "darwin",
       "arch": "arm64",
-      "version": "0.0.135",
-      "file": "ehai-0.0.135-darwin-arm64.tgz",
-      "sha256": "71c0bdecfa0a2d2b2ac39589aaaf0addebe6c1efc553bda3dbc591ab5ab01f22",
-      "bytes": 73929237,
+      "version": "0.0.136",
+      "file": "ehai-0.0.136-darwin-arm64.tgz",
+      "sha256": "e2fcee4885f34798820768eba7cc3f667b20611faf45a25b33d77a155ce962c1",
+      "bytes": 73927705,
       "format": "tgz",
       "files": 5745,
-      "unpackedBytes": 215113989,
+      "unpackedBytes": 215117374,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.135/ehai-0.0.135-darwin-arm64.tgz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.136/ehai-0.0.136-darwin-arm64.tgz"
       ]
     },
     "win32-x64": {
       "kind": "runtime",
       "platform": "win32",
       "arch": "x64",
-      "version": "0.0.135",
-      "file": "ehai-0.0.135-win32-x64.tgz",
-      "sha256": "8c32cd7385e8d10d8372bcfbd4517a06f4fe5477da35e015fff0c7513b0b6c43",
-      "bytes": 68547410,
+      "version": "0.0.136",
+      "file": "ehai-0.0.136-win32-x64.tgz",
+      "sha256": "c44848a30e71f154d23d0e1e6577d8b5a5de6fcbe5ca8067eb59862f3d74c884",
+      "bytes": 68547107,
       "format": "tgz",
       "files": 5748,
-      "unpackedBytes": 185772752,
+      "unpackedBytes": 185776137,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.135/ehai-0.0.135-win32-x64.tgz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.136/ehai-0.0.136-win32-x64.tgz"
       ]
     }
   }
