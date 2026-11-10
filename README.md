@@ -3,8 +3,8 @@
 A Claude Code and Codex plugin for TikTok Effect House. Describe the effect you
 want and the agent builds it in the real Effect House engine, shows it in a live
 preview, lets you tune it with sliders, and publishes it to your Effect House
-account. It runs on macOS with Apple silicon and on Windows x64 (an Intel Mac is
-not supported: the plugin says so and stops). You do not need to install Node.js.
+account. It runs on macOS, with Apple silicon or an Intel processor (macOS 13 or
+later), and on Windows x64. You do not need to install Node.js.
 
 Projects open in Effect House 5.16.0 and later.
 A project the plugin saves no longer opens in an older Effect House; before it

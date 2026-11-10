@@ -46,7 +46,7 @@ sharp 0.32.6 (engine)
 License: Apache-2.0
 Source: https://github.com/lovell/sharp
 
-The engine's image addon (sharp-darwin-arm64v8.node / sharp-win32-x64.node in the engine's dist folder) is sharp, Copyright 2013 Lovell Fuller and others,
+The engine's image addon (sharp-darwin-arm64v8.node / sharp-darwin-x64.node / sharp-win32-x64.node in the engine's dist folder) is sharp, Copyright 2013 Lovell Fuller and others,
 licensed under the Apache License, Version 2.0, whose full text appears in the engine notice above.
 The plugin runtime's own sharp is listed with its license text in the npm section below.
 

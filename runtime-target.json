@@ -8,6 +8,13 @@
       "engineDirectory": "cloudeh-macos",
       "engineApp": "EHAIEngine.app"
     },
+    "darwin-x64": {
+      "platform": "darwin",
+      "arch": "x64",
+      "label": "macos-x64",
+      "engineDirectory": "cloudeh-macos",
+      "engineApp": "EHAIEngine.app"
+    },
     "win32-x64": {
       "platform": "win32",
       "arch": "x64",

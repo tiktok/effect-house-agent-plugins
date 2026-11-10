@@ -5,30 +5,45 @@
       "kind": "runtime",
       "platform": "darwin",
       "arch": "arm64",
-      "version": "0.0.136",
-      "file": "ehai-0.0.136-darwin-arm64.tgz",
-      "sha256": "e2fcee4885f34798820768eba7cc3f667b20611faf45a25b33d77a155ce962c1",
-      "bytes": 73927705,
+      "version": "0.0.137",
+      "file": "ehai-0.0.137-darwin-arm64.tgz",
+      "sha256": "aca68403631135ff99bbeeffd87551db7a3939f94df7075cca228fefd3cc0cdb",
+      "bytes": 73927620,
       "format": "tgz",
       "files": 5745,
-      "unpackedBytes": 215117374,
+      "unpackedBytes": 215117526,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.136/ehai-0.0.136-darwin-arm64.tgz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.137/ehai-0.0.137-darwin-arm64.tgz"
+      ]
+    },
+    "darwin-x64": {
+      "kind": "runtime",
+      "platform": "darwin",
+      "arch": "x64",
+      "version": "0.0.137",
+      "file": "ehai-0.0.137-darwin-x64.tgz",
+      "sha256": "801953465828e5cd42d5bf88d8168d29d259d853cef379f7e7da248d7d89de26",
+      "bytes": 77216164,
+      "format": "tgz",
+      "files": 5745,
+      "unpackedBytes": 221358728,
+      "urls": [
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.137/ehai-0.0.137-darwin-x64.tgz"
       ]
     },
     "win32-x64": {
       "kind": "runtime",
       "platform": "win32",
       "arch": "x64",
-      "version": "0.0.136",
-      "file": "ehai-0.0.136-win32-x64.tgz",
-      "sha256": "c44848a30e71f154d23d0e1e6577d8b5a5de6fcbe5ca8067eb59862f3d74c884",
-      "bytes": 68547107,
+      "version": "0.0.137",
+      "file": "ehai-0.0.137-win32-x64.tgz",
+      "sha256": "4a48e24acc01f50f02bc0e36a8c2a9c45c935cee0eb006f464a333c54209622e",
+      "bytes": 68547607,
       "format": "tgz",
       "files": 5748,
-      "unpackedBytes": 185776137,
+      "unpackedBytes": 185776289,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.136/ehai-0.0.136-win32-x64.tgz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/0.0.137/ehai-0.0.137-win32-x64.tgz"
       ]
     }
   }

@@ -23,18 +23,22 @@ Effect House desktop shows under About > Licenses); where it spans several parts
 3. Plugin runtime npm packages
 ================================================================================
 
-The plugin runtime vendors or builds in these 139 npm packages for macos-arm64 and windows-x64 (name, license, the file holding its license text):
+The plugin runtime vendors or builds in these 143 npm packages for macos-arm64 and macos-x64 and windows-x64 (name, license, the file holding its license text):
 
   @esbuild/darwin-arm64@0.21.5           MIT                               no license file (below)
+  @esbuild/darwin-x64@0.21.5             MIT                               no license file (below)
   @esbuild/win32-x64@0.21.5              MIT                               no license file (below)
   @hono/node-server@1.19.14              MIT                               third-party-notices/3-npm-packages-1.txt
   @img/colour@1.1.0                      MIT                               third-party-notices/3-npm-packages-1.txt
   @img/sharp-darwin-arm64@0.34.5         Apache-2.0                        third-party-notices/3-npm-packages-1.txt
+  @img/sharp-darwin-x64@0.34.5           Apache-2.0                        no license file (below)
   @img/sharp-libvips-darwin-arm64@1.2.4  LGPL-3.0-or-later                 no license file (below)
+  @img/sharp-libvips-darwin-x64@1.2.4    LGPL-3.0-or-later                 no license file (below)
   @img/sharp-win32-x64@0.34.5            Apache-2.0 AND LGPL-3.0-or-later  no license file (below)
   @modelcontextprotocol/ext-apps@1.7.4   MIT                               third-party-notices/3-npm-packages-1.txt
   @modelcontextprotocol/sdk@1.29.0       MIT                               third-party-notices/3-npm-packages-1.txt
   @rollup/rollup-darwin-arm64@4.61.1     MIT                               no license file (below)
+  @rollup/rollup-darwin-x64@4.61.1       MIT                               no license file (below)
   @rollup/rollup-win32-x64-gnu@4.61.1    MIT                               no license file (below)
   @rollup/rollup-win32-x64-msvc@4.61.1   MIT                               no license file (below)
   @standard-schema/spec@1.1.0            MIT                               third-party-notices/3-npm-packages-1.txt
@@ -168,10 +172,14 @@ The plugin runtime vendors or builds in these 139 npm packages for macos-arm64 a
 Packages without a license file of their own:
 
   @esbuild/darwin-arm64@0.21.5: MIT, ships no license file; its license is published at https://github.com/evanw/esbuild
+  @esbuild/darwin-x64@0.21.5: MIT, ships no license file; its license is published at https://www.npmjs.com/package/@esbuild/darwin-x64/v/0.21.5
   @esbuild/win32-x64@0.21.5: MIT, ships no license file; its license is published at https://www.npmjs.com/package/@esbuild/win32-x64/v/0.21.5
+  @img/sharp-darwin-x64@0.34.5: Apache-2.0, ships no license file; its license is published at https://www.npmjs.com/package/@img/sharp-darwin-x64/v/0.34.5
   @img/sharp-libvips-darwin-arm64@1.2.4: LGPL-3.0-or-later, ships no license file; its license is published at https://github.com/lovell/sharp-libvips
+  @img/sharp-libvips-darwin-x64@1.2.4: LGPL-3.0-or-later, ships no license file; its license is published at https://www.npmjs.com/package/@img/sharp-libvips-darwin-x64/v/1.2.4
   @img/sharp-win32-x64@0.34.5: Apache-2.0 AND LGPL-3.0-or-later, ships no license file; its license is published at https://www.npmjs.com/package/@img/sharp-win32-x64/v/0.34.5
   @rollup/rollup-darwin-arm64@4.61.1: MIT, ships no license file; its license is published at https://github.com/rollup/rollup
+  @rollup/rollup-darwin-x64@4.61.1: MIT, ships no license file; its license is published at https://www.npmjs.com/package/@rollup/rollup-darwin-x64/v/4.61.1
   @rollup/rollup-win32-x64-gnu@4.61.1: MIT, ships no license file; its license is published at https://www.npmjs.com/package/@rollup/rollup-win32-x64-gnu/v/4.61.1
   @rollup/rollup-win32-x64-msvc@4.61.1: MIT, ships no license file; its license is published at https://www.npmjs.com/package/@rollup/rollup-win32-x64-msvc/v/4.61.1
   tr46@0.0.3: MIT, ships no license file; its license is published at https://github.com/Sebmaster/tr46.js
@@ -184,4 +192,4 @@ Packages without a license file of their own:
   @logsdk-tt/node@4.0.0-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
   @logsdk-tt/node-plugin-http@4.0.3-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
   @logsdk-tt/node-utils@4.0.0-alpha: ISC (ByteDance's Tea analytics SDK, from ByteDance's internal npm registry; licence as its package.json declares)
-  ehai@0.0.136: downloaded runtime; see the license included in its distribution
+  ehai@0.0.137: downloaded runtime; see the license included in its distribution

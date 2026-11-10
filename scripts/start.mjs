@@ -27,7 +27,7 @@ if (code) {
     const setup = win32 ? [join(process.env.SystemRoot ?? 'C:\\Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', join(root, 'scripts/setup.ps1')]] : ['/bin/sh', [join(root, 'scripts/setup.sh')]];
     spawn(...setup, {detached: true, stdio: 'ignore', windowsHide: true}).on('close', () => { ended = true; }).unref();
   }
-  const status = () => !pin || !engine ? 'EffectHouse AI does not support this computer (it needs Apple silicon or Windows x64).'
+  const status = () => !pin || !engine ? 'EffectHouse AI does not support this computer (it needs a Mac or Windows x64).'
     : existsSync(join(runtime(pin.version), 'bin', win32 ? 'node.exe' : 'node')) && existsSync(join(home, 'engines', engine.sha256.slice(0, 12))) ? 'EffectHouse AI is ready. Tell the user to start a new conversation.'
     : ended || existsSync(failed) ? `The download failed (${existsSync(failed) ? readFileSync(failed, 'utf8') : 'it stopped'}). Tell the user to check the network and free disk space, then start a new conversation to retry.`
     : 'EffectHouse AI is downloading about 600 MB, once. This can take a few minutes. Tell the user, and call this tool again in 30 seconds.';

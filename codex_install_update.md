@@ -7,7 +7,7 @@ not a copy from an older plugin cache.
 
 ## 1. Check the host and source
 
-Run on the user's local Codex machine: Apple silicon macOS or Windows x64.
+Run on the user's local Codex machine: macOS (Apple silicon or Intel, macOS 13 or later) or Windows x64.
 Use a native shell and one resolved absolute path to the active host's `codex`
 CLI throughout; do not use WSL for a Windows desktop app. Respect `CODEX_HOME`
 and existing settings. If the host or CLI is unavailable, report the missing
@@ -82,7 +82,7 @@ Replace placeholders below with that path and quote them for the native shell.
 The plugin brings its own Node.js, so setup is the same whether or not this
 machine has Node. Run the shipped setup entrypoint for this computer:
 
-- Apple silicon macOS:
+- macOS (Apple silicon or Intel):
 
   ```sh
   LC_ALL=C LANG=C /bin/sh "<installedPath>/scripts/setup.sh"
@@ -94,8 +94,8 @@ machine has Node. Run the shipped setup entrypoint for this computer:
   powershell -NoProfile -ExecutionPolicy Bypass -File "<installedPath>\scripts\setup.ps1"
   ```
 
-- Any other computer (Intel Mac, Linux, Windows on Arm): report that this release
-  supports only Apple silicon macOS and Windows x64, and stop.
+- Any other computer (Linux, Windows on Arm): report that this release supports
+  only macOS and Windows x64, and stop.
 
 The entrypoint checks the pinned SHA-256 of everything it downloads before it runs
 any of it, downloads the runtime (with its own Node) and the engine, about 600 MB

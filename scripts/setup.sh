@@ -1,12 +1,12 @@
 #!/bin/sh
 # Copyright (c) 2026 ByteDance Ltd. and/or its affiliates
 # SPDX-License-Identifier: Apache-2.0
-# First-time setup on a Mac: checks the whole pinned runtime archive, then runs the rest on the Node and code inside it.
+# First-time setup on a Mac: checks the runtime archive pinned for the arch it runs as, then runs the rest on its Node.
 export LC_ALL=C LANG=C EHAI_PUBLIC_PLUGIN_ROOT="$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)"
 PATH=/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 fail() { echo "FAILED: $1"; exit 1; }
-field() { plutil -extract "runtimes.darwin-arm64.$1" raw -o - "$EHAI_PUBLIC_PLUGIN_ROOT/runtime/runtime.json" 2>/dev/null; }
-[ "$(sysctl -n hw.optional.arm64 2>/dev/null)" = 1 ] && SHA=$(field sha256) || fail 'this computer is not an Apple silicon Mac, or the plugin names no runtime for it.'
+field() { plutil -extract "runtimes.darwin-$(uname -m | sed s/x86_64/x64/).$1" raw -o - "$EHAI_PUBLIC_PLUGIN_ROOT/runtime/runtime.json" 2>/dev/null; }
+SHA=$(field sha256) || fail "the plugin names no runtime for this Mac ($(uname -m)); install a build that lists it."
 DIR=${EHAI_HOME:-$HOME/.ehai}/runtime/$(field version)/lib/node_modules/ehai
 if [ ! -x "$DIR/bin/node" ]; then
   DIR=$(mktemp -d "${TMPDIR:-/tmp}/ehai-setup.XXXXXX")/package || fail 'cannot write a temporary folder.'
