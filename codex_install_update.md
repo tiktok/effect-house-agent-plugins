@@ -87,7 +87,7 @@ Take `<mainSha>` from the exact `refs/heads/main` result and require the
 marketplace's HEAD to equal it. Read the manifest from that checked commit:
 
 ```sh
-git -C "<marketplaceRoot>" show "<mainSha>:.codex-plugin/plugin.json"
+git -C "<marketplaceRoot>" show "<mainSha>:plugins/ehai/.codex-plugin/plugin.json"
 ```
 
 Parse its JSON version and require both the install result and
