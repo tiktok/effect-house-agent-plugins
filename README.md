@@ -15,19 +15,21 @@ upgrades an older project, it keeps a copy of the original in the project's `.eh
 In the Codex app or the Claude app, choose or create a workspace folder and trust it
 when asked; we recommend switching to Full access before your first message, so you
 do not approve every step. Then paste the prompt for your host (in Codex, not
-ChatGPT). It installs or updates the plugin and runs the first-time setup (about
-600 MB, once); start a new session when it finishes, so the plugin loads.
+ChatGPT; in Claude Code, not a Claude chat). It installs or updates the plugin
+and runs the first-time setup (about 600 MB, once); start a new session when it
+finishes, so the plugin loads. Pasted into a chat page, the prompt only tells
+you to come back to Codex or Claude Code.
 
 Codex:
 
 ```text
-Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/codex_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then fork this chat and continue there if supported.
+Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/codex_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then fork this chat and continue there if supported. If you cannot run commands on my computer (you are ChatGPT or another chat page, not Codex), install nothing: tell me to paste this prompt into Codex on my Mac or Windows PC.
 ```
 
 Claude Code:
 
 ```text
-Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/claude_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then fork this session and continue there if supported.
+Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/claude_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then fork this session and continue there if supported. If you cannot run commands on my computer (you are Claude or another assistant on a chat page, not Claude Code), install nothing: tell me to paste this prompt into Claude Code on my Mac or Windows PC.
 ```
 
 By hand, add the marketplace and install the plugin:
@@ -117,6 +119,12 @@ lists their third-party software, with licence texts under `third-party-notices/
 
 ## Help
 
-See the [Effect House guides](https://effecthouse.tiktok.com/learn/guides/) or ask on [Discord](https://discord.gg/effecthouse).
+- **A bug or a feature request**: open an [issue](https://github.com/tiktok/effect-house-agent-plugins/issues/new/choose),
+  or ask the assistant to "report this bug to the team": it collects the version,
+  host and what happened, shows you the draft, and posts it (or gives you the
+  prefilled link) only after you agree. Issues are public, so keep account
+  details out of them.
+- **Questions**: the [Effect House guides](https://effecthouse.tiktok.com/learn/guides/) or [Discord](https://discord.gg/effecthouse).
+- **A security problem**: the channel in [SECURITY.md](SECURITY.md), never a public issue.
 
 

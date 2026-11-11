@@ -1,6 +1,6 @@
 ---
 name: effecthouseai
-description: Make, preview, tune and publish TikTok effects and mini-games with EffectHouse AI; see how published effects are doing (views, reviews, badge, earnings), share or edit them; find trends, challenges, sounds, library assets and 3D models; list, open or create effect projects; close the plugin to free CPU and GPU. Use whenever the user asks to create, change, inspect or debug an Effect House project or effect, in any language they write in; not for developing the plugin itself.
+description: Make, preview, tune and publish TikTok effects and mini-games with EffectHouse AI; see how published effects are doing (views, reviews, badge, earnings), share or edit them; find trends, challenges, sounds, library assets and 3D models; list, open or create effect projects; close the plugin to free CPU and GPU. Use whenever the user asks to create, change, inspect or debug an Effect House project or effect, in any language they write in; not for developing the plugin itself. Also when the user wants to report a bug in the plugin, send feedback or ask for a feature: the feedback guide drafts a public GitHub issue and posts it only after they agree.
 ---
 # EffectHouse AI
 
@@ -129,6 +129,7 @@ Read only the guide that matches the requested outcome:
 | Trends, challenges, effect ideas, sounds, library assets, 3D models | `actions/ideas/GUIDE.md` |
 | List, open, switch or create projects; saved versions; package; demo video; engines | `actions/projects/GUIDE.md` |
 | Close the plugin, quit, free CPU and GPU: save, close the Studio, stop the engines | `actions/projects/GUIDE.md`, "Close the plugin" |
+| Report a bug in EffectHouse AI itself, send feedback, ask for a feature: "report this bug to the team", "tell the developers", "I wish the plugin could …" | `actions/feedback/GUIDE.md` |
 
 Two requests need no guide:
 

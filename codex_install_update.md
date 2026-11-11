@@ -5,6 +5,33 @@ than only summarizing them. Reply in the user's language. This is a standalone
 installation guide, not a skill to install. Use the current remote `main` copy,
 not a copy from an older plugin cache.
 
+## 0. Check where you are running
+
+This guide is for Codex running on the user's own Mac or Windows PC: the Codex app,
+the `codex` CLI or an IDE extension. ChatGPT is not Codex.
+Go on to step 1 only there.
+
+Stop here in any other place:
+
+- You cannot run commands at all, or only in a sandbox or cloud machine that is
+  not the user's computer: ChatGPT, Claude or another assistant in a browser or
+  on a phone, a website's chat, a cloud session.
+- You are Claude Code. Fetch
+  `https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/claude_install_update.md`
+  and follow that guide instead.
+
+When you stop, install nothing and run none of the steps in a sandbox. Do not
+list or summarize the steps, and do not turn them into commands for the user to
+type: the agent in Claude Code or Codex runs them. Tell the user only this, in
+their language:
+
+- EffectHouse AI is a plugin for Claude Code and Codex. It cannot be installed
+  from this chat.
+- It needs a Mac (macOS 13 or later) or a Windows x64 PC.
+- Open Claude Code or Codex on that computer, choose or create a folder, and
+  paste the install prompt for that app there. Both prompts are at
+  https://github.com/tiktok/effect-house-agent-plugins#install
+
 ## 1. Check the host and source
 
 Run on the user's local Codex machine: macOS (Apple silicon or Intel, macOS 13 or later) or Windows x64.
