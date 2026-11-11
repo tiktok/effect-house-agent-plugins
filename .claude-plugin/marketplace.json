@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "ehai",
-      "source": "./",
+      "source": "./plugins/ehai",
       "description": "Describe the effect you want and EffectHouse AI builds it in the real Effect House engine: face and hand tracking, stickers, makeup, 3D, text and scripted mini-games. Watch it in a live preview or on your phone, tune it with sliders, then publish it to your Effect House account and follow how it performs.",
       "displayName": "EffectHouse AI",
       "category": "design",

@@ -24,8 +24,9 @@ if (code) {
   let ended = false;
   if (pin && engine && task === 'scripts/bootstrap.mjs') {
     rmSync(failed, {force: true});
-    const setup = win32 ? [join(process.env.SystemRoot ?? 'C:\\Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', join(root, 'scripts/setup.ps1')]] : ['/bin/sh', [join(root, 'scripts/setup.sh')]];
-    spawn(...setup, {detached: true, stdio: 'ignore', windowsHide: true}).on('close', () => { ended = true; }).unref();
+    const relay = 'require("child_process").spawn(process.argv[1], process.argv.slice(2), {stdio: "ignore", windowsHide: true}).on("error", () => process.exit(1)).on("close", code => process.exit(code ?? 1))';   // Windows PowerShell exits at once without a console, which a detached child lacks: the detached process is this node relay, and PowerShell gets a hidden console of its own
+    const setup = win32 ? [process.execPath, ['-e', relay, join(process.env.SystemRoot ?? 'C:\\Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', join(root, 'scripts/setup.ps1')]] : ['/bin/sh', [join(root, 'scripts/setup.sh')]];
+    spawn(...setup, {detached: true, stdio: 'ignore', windowsHide: true}).on('error', () => { ended = true; }).on('close', () => { ended = true; }).unref();
   }
   const status = () => !pin || !engine ? 'EffectHouse AI does not support this computer (it needs a Mac or Windows x64).'
     : existsSync(join(runtime(pin.version), 'bin', win32 ? 'node.exe' : 'node')) && existsSync(join(home, 'engines', engine.sha256.slice(0, 12))) ? 'EffectHouse AI is ready. Tell the user to start a new conversation.'

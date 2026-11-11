@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "ehai",
-      "source": "./",
+      "source": "./plugins/ehai",
       "policy": {
         "installation": "AVAILABLE",
         "authentication": "ON_USE"
