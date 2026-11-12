@@ -83,7 +83,7 @@ asks whether to update and, if you agree, runs `claude plugin update ehai@effect
 
 ## Network, sign-in and privacy
 
-[PRIVACY.md](PRIVACY.md) says what the plugin sends and to whom, and how to turn off the
+[PRIVACY.md](plugins/ehai/PRIVACY.md) says what the plugin sends and to whom, and how to turn off the
 usage analytics (`EHAI_TELEMETRY=off`) or the update check (`EHAI_UPDATE_CHECK=off`). Use is governed by the
 [Effect House Terms of Service](https://effecthouse.tiktok.com/learn/guides/support/terms-of-service) and the [TikTok Privacy Policy](https://www.tiktok.com/legal/privacy-policy).
 
@@ -113,8 +113,8 @@ too. Then remove the plugin with `claude plugin uninstall ehai@effect-house` or
 ## Licence
 
 This repository's source code and documentation are licensed under
-[Apache-2.0](LICENSE) ([NOTICE](NOTICE)). The downloaded runtime and engine come
-under their own licences, which it does not relicense; [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt)
+[Apache-2.0](plugins/ehai/LICENSE) ([NOTICE](plugins/ehai/NOTICE)). The downloaded runtime and engine come
+under their own licences, which it does not relicense; [THIRD_PARTY_NOTICES.txt](plugins/ehai/THIRD_PARTY_NOTICES.txt)
 lists their third-party software, with licence texts under `third-party-notices/`.
 
 ## Help
@@ -125,6 +125,6 @@ lists their third-party software, with licence texts under `third-party-notices/
   prefilled link) only after you agree. Issues are public, so keep account
   details out of them.
 - **Questions**: the [Effect House guides](https://effecthouse.tiktok.com/learn/guides/) or [Discord](https://discord.gg/effecthouse).
-- **A security problem**: the channel in [SECURITY.md](SECURITY.md), never a public issue.
+- **A security problem**: the channel in [SECURITY.md](plugins/ehai/SECURITY.md), never a public issue.
 
 
