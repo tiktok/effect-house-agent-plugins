@@ -2,7 +2,7 @@
 name: effects
 description: The user's PUBLISHED effects on Effect House — "how are my effects
   doing", "views this month", "who uses my effect", "compare my effects", "why
-  was it rejected", "share link / QR", "rename it, add a tag", "take it off
+  was it rejected", "share link / QR", "rename it", "do tags matter", "take it off
   TikTok", "withdraw the update". Reads with effect_analytics and effects_list,
   shares with effect_share, edits details with effect_update; deactivate,
   withdraw and delete stay the user's, on the effect's page.
@@ -76,7 +76,7 @@ in the publish guide), not as a new effect. In review means not live yet; say so
 and a QR code. Only an Active or Launched effect has one; any other state
 answers `wrong_status` — tell the user the effect's state instead.
 
-## Edit details: name, hint, category, tags
+## Edit details: name, hint, category
 
 `effect_update {id, …}` WRITES to the user's Effect House account, and only an
 Active effect or one that Needs modification can be edited.
@@ -87,8 +87,10 @@ Active effect or one that Needs modification can be edited.
 3. Wait for a yes, then call it with only the fields that change.
 4. Report `backInReview` and `status` from the answer.
 
-`tags` replaces the whole list: to add or remove one tag, send the full new
-list built from `details.tags` (at most 10, each at most 20 characters).
+Tags are not edited: an update keeps the effect's tags as they are, and
+`details.tags` only shows them. If the user asks to add or change tags, say
+that Effect House's own submission page has no Tags field and that tags typed
+by hand do not affect search or recommendation, so there is nothing to gain.
 `hint` is a key from Effect House's fixed list, not a sentence. A live
 effect's challenge and icon are not editable here: they travel with its next
 version (the publish guide's `effectToUpdate`).

@@ -48,7 +48,7 @@ suits, the example video's `views` and its `tiktokUrl`.
   `trends_list` or `challenges_list` during a publish, because they pop this
   card: there, `publish_options` reads the same choices with no card, and only
   one that fits is filled into the publish card (the publish guide).
-- The reply's `pageUrl` is the Explore page for trends_list and the
+- The reply's `pageUrl` is the Trends page for trends_list and the
   Challenges page for challenges_list;
   `entranceId` and `hostAction` carry the host-sidebar contract (the preview
   guide): on first delivery or an explicit reopen, open or reuse it beside the

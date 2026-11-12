@@ -5,7 +5,7 @@ description: Send a finished effect to Effect House for review — "publish this
   as a new version of …". Builds the package, checks what Effect House checks,
   then — only after the user says yes — submits it for review with the same
   call Effect House's own Publish window makes: a new effect or a new version of
-  one already on their account, with its category, tags, trend, challenge and
+  one already on their account, with its category, trend, challenge and
   default sound. One effect_publish call, twice.
 ---
 # publish — the effect into Effect House's review queue
@@ -63,10 +63,9 @@ is the decision — never submit on your own drafts.
    effect project (the one the engine has open). It exports the package and checks it here (script lint, size, icon, name); the package is not uploaded.
    It does not submit the effect for review or consume a submission quota.
    It reports `name`, `sizeBytes`, `icon`, `warnings`, `blockers` — and, when
-   you passed `effectToUpdate`, `category`, `tags`, `trendId` or `challengeId`,
-   a `summary` line naming them, e.g. "Update of Wet Glass (v1 → v2) — the live
-   version keeps running until this one passes review · category: Funny · tags:
-   rain, glass".
+   you passed `effectToUpdate`, `category`, `trendId` or `challengeId`, a
+   `summary` line naming them, e.g. "Update of Wet Glass (v1 → v2) — the live
+   version keeps running until this one passes review · category: Funny".
    It also answers a `checkId`: the receipt of what it checked.
    - `check_unavailable` (on the dry run): no `checkId` was issued, so nothing
      can be confirmed — run the dry run once more; if it repeats, tell the user
@@ -150,8 +149,6 @@ ask for the rest:
   `music` (a label such as "World AR" also works). Any other word is refused,
   not sent as "no category"; leave it out for none. An update does not copy
   the old effect's category, so pass it again if it should keep one.
-- `tags` — at most 10, each at most 20 characters; blanks and repeats are
-  dropped. Propose a few only if the user wants tags, and let them agree.
 - `trendId` — from `publish_options`: the trend this effect was built from or
   truly fits (it travels as Effect House's "inspiration"); name the trend, not
   the id. The card's Trend field lets the user pick one themselves.
@@ -193,8 +190,8 @@ icon and a name (the two starred fields), so a missing one stops the dry run:
 - *name over 25 characters* → Effect House's own ceiling. Shorten it WITH the
   user, do not silently truncate their title.
 - *description over 300 characters* → same: shorten it with them.
-- *too many tags, or a tag over 20 characters, or a category off the list*
-  → answered as `invalid` before anything is built; fix it with them.
+- *a category off the list* → answered as `invalid` before anything is
+  built; fix it with them.
 - *scripts do not lint clean* → fix what the blocker names, then re-run the dry run.
 - *hint is not on the list* → `hint` is a key out of a fixed list, not a
   sentence: `tap_your_screen`, `show_your_face`, `open_your_mouth`, `smile`,
@@ -221,7 +218,13 @@ when it is there. Do not offer to fill those in, and never describe the effect
 as live. A trend, challenge or
 default sound travels with a submission: one that was missed goes in with the
 next version (`effectToUpdate`), since `effect_update` changes only the name,
-hint, category and tags.
+hint and category.
+
+**Tags: there are none to fill in.** Effect House's own submission page has no
+Tags field, and tags typed by hand never reach its search or recommendation,
+so no tool sets them. Do not draft or offer tags; if the user asks whether tags
+help, say they do not, and point to what does travel with a submission: a
+fitting category, trend or challenge.
 
 **Limits are a wait, not a fix.** "too many this hour" / "too many today" are
 Effect House's own submission quotas for the account; tell the user when to try

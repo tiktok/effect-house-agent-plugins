@@ -125,7 +125,7 @@ Read only the guide that matches the requested outcome:
 | Create or replace the effect icon | `actions/icon/GUIDE.md` |
 | Check performance | `actions/perf/GUIDE.md` |
 | Prepare or submit an effect for review | `actions/publish/GUIDE.md` |
-| How my effects are doing, why one was rejected, share link, rename or tags, deactivate / withdraw / delete, badge, earnings | `actions/effects/GUIDE.md` |
+| How my effects are doing, why one was rejected, share link, rename, do tags matter, deactivate / withdraw / delete, badge, earnings | `actions/effects/GUIDE.md` |
 | Trends, challenges, effect ideas, sounds, library assets, 3D models | `actions/ideas/GUIDE.md` |
 | List, open, switch or create projects; saved versions; package; demo video; engines | `actions/projects/GUIDE.md` |
 | Close the plugin, quit, free CPU and GPU: save, close the Studio, stop the engines | `actions/projects/GUIDE.md`, "Close the plugin" |

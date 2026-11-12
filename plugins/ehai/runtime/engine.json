@@ -5,60 +5,60 @@
       "kind": "engine",
       "platform": "darwin",
       "arch": "arm64",
-      "revision": "833467881398000f92f8fb253e1d14ea3f1bae88",
+      "revision": "60b59503ba52908a4e207c4535a62f8e7900ea6d",
       "sdkRevision": "c52e0c19f9661404e9280e92ada7e725f1406b96",
       "contractHash": "sha256:18a2a95255e0d84e1533c1530337db58506b1f55cd269420365edb5a5a629019",
       "hostPluginHash": "sha256:058da363afcad16bd7726941a2b4d9339ec1998fd9adbee9d12c1dfbb5b6c6e4",
       "ehVersion": "5.16.0",
-      "file": "cloudeh-darwin-arm64-833467881398.tar.xz",
-      "sha256": "726c54423dd6b8d063e31a5e3066686057d1ae4f4301d8f2fbb11d31316b7c77",
-      "bytes": 493154800,
+      "file": "cloudeh-darwin-arm64-60b59503ba52.tar.xz",
+      "sha256": "39ac3f37bc7c540cb4aa32af5f4fe346eb17457a3a8c63164232663fdc01f6e7",
+      "bytes": 493068176,
       "format": "tar.xz",
       "manifest": "EHAIEngine.app/Contents/Resources/cloudeh-macos/dist/cloud-eh.json",
       "files": 11208,
-      "unpackedBytes": 926184277,
+      "unpackedBytes": 926195561,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/833467881398000f92f8fb253e1d14ea3f1bae88/ehai-engine/cloudeh-darwin-arm64-833467881398.tar.xz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/60b59503ba52908a4e207c4535a62f8e7900ea6d/ehai-engine/cloudeh-darwin-arm64-60b59503ba52.tar.xz"
       ]
     },
     "darwin-x64": {
       "kind": "engine",
       "platform": "darwin",
       "arch": "x64",
-      "revision": "833467881398000f92f8fb253e1d14ea3f1bae88",
+      "revision": "60b59503ba52908a4e207c4535a62f8e7900ea6d",
       "sdkRevision": "c52e0c19f9661404e9280e92ada7e725f1406b96",
       "contractHash": "sha256:18a2a95255e0d84e1533c1530337db58506b1f55cd269420365edb5a5a629019",
       "hostPluginHash": "sha256:058da363afcad16bd7726941a2b4d9339ec1998fd9adbee9d12c1dfbb5b6c6e4",
       "ehVersion": "5.16.0",
-      "file": "cloudeh-darwin-x64-833467881398.tar.xz",
-      "sha256": "4579cde5ace2bf20ed2794902d78be96355647f122e1ad65e071f77b6cd275ca",
-      "bytes": 506660528,
+      "file": "cloudeh-darwin-x64-60b59503ba52.tar.xz",
+      "sha256": "f3ac8413a9da14c3a99f01d8d03fe6a221c7043becc3e0548b354b910694e52a",
+      "bytes": 506676976,
       "format": "tar.xz",
       "manifest": "EHAIEngine.app/Contents/Resources/cloudeh-macos/dist/cloud-eh.json",
       "files": 11208,
-      "unpackedBytes": 948592803,
+      "unpackedBytes": 948604087,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/833467881398000f92f8fb253e1d14ea3f1bae88/ehai-engine/cloudeh-darwin-x64-833467881398.tar.xz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/60b59503ba52908a4e207c4535a62f8e7900ea6d/ehai-engine/cloudeh-darwin-x64-60b59503ba52.tar.xz"
       ]
     },
     "win32-x64": {
       "kind": "engine",
       "platform": "win32",
       "arch": "x64",
-      "revision": "833467881398000f92f8fb253e1d14ea3f1bae88",
+      "revision": "60b59503ba52908a4e207c4535a62f8e7900ea6d",
       "sdkRevision": "c52e0c19f9661404e9280e92ada7e725f1406b96",
       "contractHash": "sha256:18a2a95255e0d84e1533c1530337db58506b1f55cd269420365edb5a5a629019",
       "hostPluginHash": "sha256:058da363afcad16bd7726941a2b4d9339ec1998fd9adbee9d12c1dfbb5b6c6e4",
       "ehVersion": "5.16.0",
-      "file": "cloudeh-win32-x64-833467881398.tar.gz",
-      "sha256": "c0f14e54f210c956cb8ab0c037c721501cff62363f4dafee9bd68220b9a4d8b0",
-      "bytes": 607950475,
+      "file": "cloudeh-win32-x64-60b59503ba52.tar.gz",
+      "sha256": "4ebb8b9f7a755d441267714714234fc688c67a52a40e24201772b6decf6aba50",
+      "bytes": 607945041,
       "format": "tar.gz",
       "manifest": "cloudeh-windows/dist/cloud-eh.json",
       "files": 11251,
-      "unpackedBytes": 1015902830,
+      "unpackedBytes": 1015914120,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/833467881398000f92f8fb253e1d14ea3f1bae88/ehai-engine/cloudeh-win32-x64-833467881398.tar.gz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/60b59503ba52908a4e207c4535a62f8e7900ea6d/ehai-engine/cloudeh-win32-x64-60b59503ba52.tar.gz"
       ]
     }
   }

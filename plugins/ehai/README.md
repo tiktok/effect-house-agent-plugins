@@ -52,6 +52,10 @@ The first time you use the plugin, the agent shows a QR code in the chat. In the
 TikTok app, tap Profile, then the menu (☰), then Your QR code; tap the scan button,
 scan the code and confirm on your phone. If the code expires, ask for a new one.
 
+In Codex, a sign-in card that stays blank usually means a local proxy is blocking
+`web-sandbox.oaiusercontent.com`, where Codex loads its cards. Set that domain and
+its subdomains to connect directly, then ask for the code again.
+
 ## Try it
 
 - "Create an iridescent ribbon effect with glowing sparkles floating around my face."

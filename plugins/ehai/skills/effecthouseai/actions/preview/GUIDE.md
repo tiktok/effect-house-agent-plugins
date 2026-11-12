@@ -67,9 +67,11 @@ Phone preview may be refused by Effect House's risk check (`blocked: true`,
 code `risk_blocked`): it refuses the package, not the account; when it works,
 `effect_preview` returns `previewUrl` with its QR code — show the QR code to
 scan with TikTok on the phone, not the link (on a computer it opens a TikTok
-web page). The code comes the way `auth_login`'s does: an image attached to the
-tool result where the host shows it, otherwise `qrMarkdown` to render as an
-image in your reply, or `qrText` in a fenced text block. Follow the result's
+web page). Where the host shows cards, the phone preview card under the call
+draws the code full size and you show nothing yourself; elsewhere the code
+comes as an image attached to the tool result where the host shows it,
+otherwise `qrMarkdown` to render as an image in your reply, or `qrText` in a
+fenced text block. Follow the result's
 `next`, then tell the user: "Scan this QR code with the TikTok app on your
 phone to preview the effect." On a refusal ("Package rejected due to risk")
 say the risk check refused the package — never that phone preview is not
