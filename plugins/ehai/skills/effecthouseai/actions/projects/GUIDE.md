@@ -109,7 +109,7 @@ Never create a project with `studio_open`; creation is the kernel's.
    Report `kept` as it says (chat never discards work); `page_open`: retry with `closeTabs`
    once the user agrees; `page_stayed`: the user closes or reloads that tab, then retry.
 5. Say what closed. The background service, nearly idle now, quits about two minutes
-   after the last Claude or Codex window closes (Quit EHAI in the menu bar or tray: now).
+   after the last Claude or Codex window closes (Quit EffectHouse AI in the menu bar or tray: now).
    Then call no `eh`, preview or studio tool unless asked: each starts an engine again.
 
 ## Engines, copies, rename, delete
