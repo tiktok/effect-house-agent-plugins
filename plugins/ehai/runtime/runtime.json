@@ -5,45 +5,45 @@
       "kind": "runtime",
       "platform": "darwin",
       "arch": "arm64",
-      "version": "1.0.3",
-      "file": "ehai-1.0.3-darwin-arm64.tgz",
-      "sha256": "be583e979a0a140233a1896bdc8fbad16182f3300289ffe68ff7482d49020c5c",
-      "bytes": 74050480,
-      "format": "tgz",
-      "files": 5762,
-      "unpackedBytes": 215614473,
+      "version": "1.0.4",
+      "file": "ehai-1.0.4-darwin-arm64.tar.xz",
+      "sha256": "9ed932a4a904d3ee7a6f3d04e8f125c6e9694fff3a539bb8d7d9d0b8df58b496",
+      "bytes": 47586904,
+      "format": "tar.xz",
+      "files": 5770,
+      "unpackedBytes": 215738314,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/1.0.3/ehai-1.0.3-darwin-arm64.tgz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/1.0.4/ehai-1.0.4-darwin-arm64.tar.xz"
       ]
     },
     "darwin-x64": {
       "kind": "runtime",
       "platform": "darwin",
       "arch": "x64",
-      "version": "1.0.3",
-      "file": "ehai-1.0.3-darwin-x64.tgz",
-      "sha256": "bb4afeef220b2f03d359b2bddd5ff89583d2bd3c0506b75a51a827d250336cc4",
-      "bytes": 77344195,
-      "format": "tgz",
-      "files": 5762,
-      "unpackedBytes": 221859803,
+      "version": "1.0.4",
+      "file": "ehai-1.0.4-darwin-x64.tar.xz",
+      "sha256": "26f96f54c77fbbbb5a907a3dd833ba0b91da1650698986a91f4735a48958e2e2",
+      "bytes": 51309800,
+      "format": "tar.xz",
+      "files": 5770,
+      "unpackedBytes": 221983644,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/1.0.3/ehai-1.0.3-darwin-x64.tgz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/1.0.4/ehai-1.0.4-darwin-x64.tar.xz"
       ]
     },
     "win32-x64": {
       "kind": "runtime",
       "platform": "win32",
       "arch": "x64",
-      "version": "1.0.3",
-      "file": "ehai-1.0.3-win32-x64.tgz",
-      "sha256": "4196ffce4a6b6964f7423b5b396839affbfe4fb3f2644bb1455b662557440e92",
-      "bytes": 68679037,
+      "version": "1.0.4",
+      "file": "ehai-1.0.4-win32-x64.tgz",
+      "sha256": "b091cafb743a61a4f892ec7e37d2b3e946081f59395ef3f078975b40b6ec6da0",
+      "bytes": 68714982,
       "format": "tgz",
-      "files": 5765,
-      "unpackedBytes": 186273156,
+      "files": 5773,
+      "unpackedBytes": 186396997,
       "urls": [
-        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/1.0.3/ehai-1.0.3-win32-x64.tgz"
+        "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/runtime/1.0.4/ehai-1.0.4-win32-x64.tgz"
       ]
     }
   }

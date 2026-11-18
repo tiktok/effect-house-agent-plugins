@@ -12,9 +12,9 @@ if [ ! -x "$DIR/bin/node" ]; then
   DIR=$(mktemp -d "${TMPDIR:-/tmp}/ehai-setup.XXXXXX")/package || fail 'cannot write a temporary folder.'
   trap 'rm -rf "${DIR%/package}"' EXIT
   echo 'Downloading the EffectHouse AI runtime...'
-  curl -fsSL --proto-redir =https --retry 3 --connect-timeout 30 --speed-limit 1024 --speed-time 120 --max-filesize "$(field bytes)" -o "$DIR.tgz" "$(field urls.0)" || fail "the runtime download failed (curl exit $?). Check the network or proxy, then run this again."
-  [ "$(shasum -a 256 "$DIR.tgz" | cut -d ' ' -f 1)" = "$SHA" ] || fail 'the runtime download does not match its pinned SHA-256; nothing from it was run.'
-  tar -xzf "$DIR.tgz" -C "${DIR%/package}" package/bin/node package/shell/scripts || fail 'could not unpack the runtime archive.'
-  export EHAI_VERIFIED_RUNTIME="$DIR.tgz"
+  curl -fsSL --proto-redir =https --retry 3 --connect-timeout 30 --speed-limit 1024 --speed-time 120 --max-filesize "$(field bytes)" -o "$DIR.archive" "$(field urls.0)" || fail "the runtime download failed (curl exit $?). Check the network or proxy, then run this again."
+  [ "$(shasum -a 256 "$DIR.archive" | cut -d ' ' -f 1)" = "$SHA" ] || fail 'the runtime download does not match its pinned SHA-256; nothing from it was run.'
+  tar -xf "$DIR.archive" -C "${DIR%/package}" package/bin/node package/shell/scripts || fail 'could not unpack the runtime archive.'
+  export EHAI_VERIFIED_RUNTIME="$DIR.archive"
 fi
 "$DIR/bin/node" "$DIR/shell/scripts/setup-runtime.mjs"
