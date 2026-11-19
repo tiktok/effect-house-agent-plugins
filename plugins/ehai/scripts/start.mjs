@@ -13,8 +13,8 @@ if (!/^(?:scripts|hooks)\/[\w-]+\.mjs$/.test(task)) throw new Error(`start.mjs: 
 const pinned = name => JSON.parse(readFileSync(join(root, `runtime/${name}.json`), 'utf8'))[`${name}s`]?.[`${process.platform}-${process.arch}`];
 const pin = pinned('runtime'), engine = pinned('engine');
 const home = process.env.EHAI_HOME ?? join(homedir(), '.ehai'), failed = join(home, 'runtime/.fetch-failed');
-const runtime = version => join(home, 'runtime', version, 'lib/node_modules/ehai');
-const code = [pin?.version, 'current'].filter(Boolean).map(version => join(runtime(version), 'shell')).find(dir => existsSync(join(dir, task)));   // only a runtime holding the task: a hook a newer plugin names and an older runtime lacks is skipped
+const runtime = version => join(home, 'runtime', version, 'lib/node_modules/ehai'), since = dir => { try { const [a, b, c] = JSON.parse(readFileSync(join(dir, '../package.json'), 'utf8')).version.match(/^(\d+)\.(\d+)\.(\d+)$/).slice(1).map(Number); return a > 1 || (a === 1 && (b > 0 || c >= 4)); } catch { return false; } };
+const code = [pin?.version, 'current'].filter(Boolean).map(version => [version, join(runtime(version), 'shell')]).find(([version, dir]) => existsSync(join(dir, task)) && (version !== 'current' || (pin?.format ?? 'tgz') === 'tgz' || since(dir)))?.[1];   // only a runtime holding the task: a hook a newer plugin names and an older runtime lacks is skipped; and `current` only when it reads the pin, as a runtime before 1.0.4 (or of no readable x.y.z version) refuses a tar.xz one and would never fetch the new runtime, which the setup below then does as on a first start
 if (code) {
   const entry = realpathSync(join(code, task));
   process.env.EHAI_PUBLIC_PLUGIN_ROOT = root;

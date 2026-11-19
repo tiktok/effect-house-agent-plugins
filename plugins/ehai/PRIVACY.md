@@ -28,6 +28,22 @@ What EffectHouse AI sends, to whom, and how to turn the optional parts off.
   reads its release file from the marketplace repository with git. Any failure
   means no notice. Set `EHAI_UPDATE_CHECK=off` in the environment of the host
   to turn it off, with the update offer in the chat.
+- Remote settings: while you are signed in, the local daemon (the plugin's
+  background service) reads the settings for your account (feature switches
+  and gradual rollouts) a few seconds after it starts, after you sign in or
+  your profile is refreshed, every two hours, and at most once a minute
+  while it holds none for your account, from the settings host Effect House's
+  configuration names for your region, as Effect House desktop does. The
+  request carries the plugin's version, the Effect House version its engine
+  matches, platform and processor type and your Effect House session cookie,
+  which is how the host knows the account; no device identifier is sent. The
+  answer, every setting the host returns for your account, is kept in
+  `~/.ehai/libra.json` until uninstall. The service reads `EHAI_LIBRA=off`
+  when it starts: set it in the environment of the app that starts the
+  service, then quit the service (Quit EffectHouse AI in its menu-bar or tray
+  icon) so the next tool call starts it with the switch; it then reads
+  nothing, and every setting keeps its built-in value. A service you set to
+  start at login is not started by the app, so the switch does not reach it.
 - Every tool needs a TikTok account signed in to Effect House: the first call
   shows a QR code to scan with the TikTok app. The session is stored in
   `~/.ehai`, readable only by your user.
