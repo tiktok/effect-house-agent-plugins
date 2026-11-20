@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "deltas": {
+    "darwin-arm64": [
+      {
+        "from": "ca9c448f4085019296902cf86088046baff4c2cb118a4d5e796a14c8c789bcae",
+        "file": "cloudeh-darwin-arm64-ce35f74adf08.from-ca9c448f4085.tar.xz",
+        "sha256": "aebbc94b2b6c5cd67329eed474ff1f3d0b8359b371470dedb56ba7f837a1b355",
+        "bytes": 73653812,
+        "format": "tar.xz",
+        "urls": [
+          "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/ce35f74adf0875c4ecbf967986a172347d1a5ba6/ehai-engine/cloudeh-darwin-arm64-ce35f74adf08.from-ca9c448f4085.tar.xz"
+        ]
+      }
+    ],
+    "darwin-x64": [
+      {
+        "from": "e9b96475afc086a57a9c6827289d4decd9692b36441d2f88defb14b5dfe3a255",
+        "file": "cloudeh-darwin-x64-ce35f74adf08.from-e9b96475afc0.tar.xz",
+        "sha256": "6e0e959063b592bb6d11f7c5ccb6353c8d3698bcc6d961dd57767f451c24410d",
+        "bytes": 85480448,
+        "format": "tar.xz",
+        "urls": [
+          "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/ce35f74adf0875c4ecbf967986a172347d1a5ba6/ehai-engine/cloudeh-darwin-x64-ce35f74adf08.from-e9b96475afc0.tar.xz"
+        ]
+      }
+    ],
+    "win32-x64": [
+      {
+        "from": "1ed9796db83134f803042ec02cc81cc4dac1f0c393c7efd40eb08e12bc03c14b",
+        "file": "cloudeh-win32-x64-ce35f74adf08.from-1ed9796db831.tar.zst",
+        "sha256": "b3d559a040ffa2494b69137b0851922ab58b0c98dbfe8fb6372b5184ef78da96",
+        "bytes": 107268839,
+        "format": "tar.zst",
+        "urls": [
+          "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/ce35f74adf0875c4ecbf967986a172347d1a5ba6/ehai-engine/cloudeh-win32-x64-ce35f74adf08.from-1ed9796db831.tar.zst"
+        ]
+      }
+    ]
+  },
+  "archives": {
+    "win32-x64": [
+      {
+        "file": "cloudeh-win32-x64-ce35f74adf08.tar.zst",
+        "sha256": "780d47afa98292b3717c5c5a7a9b5bd1c1a451d48b2f359f4743dfa45f5c194c",
+        "bytes": 445187460,
+        "format": "tar.zst",
+        "urls": [
+          "https://sf16-va.tiktokcdn.com/obj/eden-va2/olaa_ajlmml_zlp/ljhwZthlaukjlkulzlp/ehai/engine/ce35f74adf0875c4ecbf967986a172347d1a5ba6/ehai-engine/cloudeh-win32-x64-ce35f74adf08.tar.zst"
+        ]
+      }
+    ]
+  }
+}

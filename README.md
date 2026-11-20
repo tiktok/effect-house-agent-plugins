@@ -6,7 +6,7 @@ preview, lets you tune it with sliders, and publishes it to your Effect House
 account. It runs on macOS, with Apple silicon or an Intel processor (macOS 13 or
 later), and on Windows x64. You do not need to install Node.js.
 
-Projects open in Effect House 5.16.0 and later.
+Projects open in Effect House 5.16.1 and later.
 A project the plugin saves no longer opens in an older Effect House; before it
 upgrades an older project, it keeps a copy of the original in the project's `.ehai` folder.
 

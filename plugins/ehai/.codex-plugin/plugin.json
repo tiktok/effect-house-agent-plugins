@@ -1,6 +1,6 @@
 {
   "name": "ehai",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Describe the effect you want and EffectHouse AI builds it in the real Effect House engine: face and hand tracking, stickers, makeup, 3D, text and scripted mini-games. Watch it in a live preview or on your phone, tune it with sliders, then publish it to your Effect House account and follow how it performs.",
   "author": {
     "name": "Effect House"
@@ -19,7 +19,7 @@
   "interface": {
     "displayName": "EffectHouse AI",
     "shortDescription": "Make TikTok effects by chat",
-    "longDescription": "Describe the effect you want and EffectHouse AI builds it in the real Effect House engine: face and hand tracking, stickers, makeup, 3D, text and scripted mini-games. Watch it in a live preview or on your phone, tune it with sliders, then publish it to your Effect House account and follow how it performs. Projects open in Effect House 5.16.0 and later.",
+    "longDescription": "Describe the effect you want and EffectHouse AI builds it in the real Effect House engine: face and hand tracking, stickers, makeup, 3D, text and scripted mini-games. Watch it in a live preview or on your phone, tune it with sliders, then publish it to your Effect House account and follow how it performs. Projects open in Effect House 5.16.1 and later.",
     "developerName": "Effect House",
     "category": "Design",
     "capabilities": [
