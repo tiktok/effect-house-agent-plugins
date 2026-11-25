@@ -184,8 +184,10 @@ icon and a name (the two starred fields), so a missing one stops the dry run:
 
 - *needs a name* → the project is still called "Untitled…"; ask the user what
   to call it and pass `name`. Required.
-- *no Effect House icon* → `effect_icon_set {}` (the icon skill) and try
-  again. Required — an effect cannot be submitted without one.
+- *no Effect House icon* → paint one that matches the effect:
+  `effect_icon_set {prompt: "<the effect, described>"}` (the icon guide,
+  **Painting**; its fallback is `effect_icon_set {}`, the preview's frame), then
+  try again. Required — an effect cannot be submitted without one.
 - *icon over 2 MB* → set it again; the tool writes a compliant one.
 - *name over 25 characters* → Effect House's own ceiling. Shorten it WITH the
   user, do not silently truncate their title.

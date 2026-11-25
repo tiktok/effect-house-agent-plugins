@@ -30,13 +30,14 @@ clip, an icon model) also attaches that frame. The text never carries a picture.
 
 | what they said | call |
 |---|---|
-| "make an icon for this" / nothing else | `{}` — the frame the preview shows now |
+| "make an icon for this" / nothing else / a submission that needs one | `{prompt: "<the effect, described>"}` — see **Painting**, the default |
+| "use the preview" / "a screenshot of it" | `{}` — the frame the preview shows now |
 | "put it on a face / a hand / a cat" | `{clip: "turnhead"}` — staged footage |
 | "use Effect House's stock person / pet model" | `{source: "template"}`, then see **Icon models** |
 | "try a few and let me pick" | 2–4 tries with `apply: false`, then see **Let me pick** |
 | "move the crop" / "zoom in" | `{source: "recrop", captureId, crop}` — see **Move the square** |
 | "use this picture / that photo" | `{file: "<path>"}` |
-| "draw me an icon of X" | `{prompt: "X"}` |
+| "draw me an icon of X" | `{prompt: "X"}` — their words lead; add the effect's style |
 | "remove the icon" | `{source: "clear"}` |
 
 Clip ids (the ids `preview_set_clip` takes): `idle`, `nodding`, `openmouth`, `raiseeyebrows`, `turnhead`, `hand`, `twoperson`, `ground`, `road`, `ceiling`, `dancing`, `cat`, `dog`.
@@ -50,14 +51,18 @@ The Studio offers only installed or engine-downloadable footage; selection prepa
   `dancing` is the full body; `cat` and `dog` are the pets. There is no `pet`
   or `fullbody` clip. Pick footage the effect actually reads: a face effect on
   a face clip, a pet effect on `cat` or `dog`.
-- An icon is **the effect running on someone** — that is what Effect House's own
-  Create Icon does, which is why a clip or an icon model is usually the best
-  answer. Both switch what the preview shows for a moment and put it back; say
-  so if the user is watching.
-- The default (`{}`) takes the frame the preview shows **right now** — the
-  centre square, the crop Effect House's own icon tool takes. On "no engine is
-  running this project", open the project first. If the effect's opening moment
-  is not its best, drive it to a good one (`preview_interact`) first.
+- **The default is a painted icon** (`prompt`, see **Painting**): a picture
+  made for the square, matching what the effect shows and how it is drawn. A
+  frame of the preview is a screenshot of stock footage and rarely reads at
+  thumbnail size; take one only when the user asks for it or painting is not
+  available.
+- A clip or an icon model shows **the effect running on someone** — what Effect
+  House's own Create Icon does. Both switch what the preview shows for a moment
+  and put it back; say so if the user is watching.
+- `{}` takes the frame the preview shows **right now** — the centre square, the
+  crop Effect House's own icon tool takes. On "no engine is running this
+  project", open the project first. If the effect's opening moment is not its
+  best, drive it to a good one (`preview_interact`) first.
 - `frameSource: "last-frame"` with a `note`: the engine was busy, so the icon
   was cut from the last frame the preview delivered. Say so.
 
@@ -117,10 +122,57 @@ listing. The first use of a model downloads it (a few seconds).
 subject, big, centred, strong contrast. Say whether it reads as this effect, and
 offer another take when it does not, rather than reporting success and moving on.
 
-## Painting (`prompt`)
+## Painting (`prompt`) — the default
 
-One opaque 1:1 image. Write the prompt as a thumbnail: one subject, big,
-centred, strong contrast; say what the effect DOES, not what its code is. The
+One opaque 1:1 image, written straight to `Icon/icon.png` (no `apply: false`
+unless the user wants to choose). The picture must match the effect — what it
+shows and how it is drawn:
+
+1. **The effect itself is the reference.** With the project open in an engine,
+   the tool hands the painter the frame the preview shows now, so the icon
+   keeps this effect's elements. Open the project first, and drive the effect
+   to its best moment (`preview_interact`) if its opening is not it. A `note`
+   saying the icon was painted from the prompt alone means there was no frame:
+   open the project and paint again.
+2. Know what the effect shows. If you have not seen it running in this
+   conversation, look first: `{apply: false}` answers the preview's frame and
+   writes nothing.
+3. Write the prompt from what is on screen, **the art style first**: the
+   painter draws in the style the prompt names, so name the effect's own (3D
+   cartoon, flat 2D vector, pixel art, soft plush toy, neon arcade,
+   photorealistic …). Then **who or what carries the effect** (a character, a
+   hand, a pet, the whole scene), **each visible element** with its shape and
+   colour, and the palette. For example: `3D cartoon: a cheerful character
+   wearing a black witch hat, skull-style black eye makeup, purple lips and
+   orange freckle dots on the cheeks, purple and orange palette`. Say what the
+   effect LOOKS like, not what its code is; no names of real people, brands or
+   characters, and no words that are drawn on the screen (they come back as
+   text in the picture).
+4. Do not describe the layout or the background: the tool adds the icon
+   composition itself (one subject, large and centred, on a vivid backdrop that
+   fills the picture, nothing drawn around it, no text) and tells the painter to
+   keep the effect's elements but draw a new character, never the person in the
+   footage.
+5. Judge the result (see **Judging**). When an element or the style is off, the
+   picture came back as a tile with a border or rounded corners, or it shows a
+   real-looking person, paint once more with a corrected prompt, then keep the
+   better one.
+
+**In Codex, Codex's own image tool paints whenever it exists** (the result says
+`actionRequired`, below): use it, not Effect House AIGC. Give it the result's
+prompt and, when it takes reference images, the preview's frame from step 2.
+Only a Codex session that has no image tool goes back to Effect House AIGC:
+the same call plus `painter: "effect-house"`. Every other host paints with
+Effect House AIGC and the reference frame.
+
+
+
+When painting fails: `AIGC is busy` → the same prompt again; a moderation
+refusal → plainer words for the subject; still failing, or not signed in to
+image generation → fall back to `{}` (the preview's frame) so a submission is
+not left without an icon, and say that the icon is a screenshot.
+
+The
 result's `provider` says who painted it — `effect-house` is Effect House AIGC —
 and `providerSetting` says where that is chosen; name both. The choice is not on
 a page and not in a tool: on macOS it is the EHAI **menu bar** (Image generation
