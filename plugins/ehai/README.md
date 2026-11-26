@@ -46,12 +46,11 @@ Then run the setup in the installed folder, `sh scripts/setup.sh` (on Windows
 says `READY`, and start a new conversation (in Codex a new task). In Claude Code,
 turn on auto-update for the `effect-house` marketplace under `/plugin`, Marketplaces.
 
-Other agents: an agent that installs Claude Code plugins from a GitHub repository
-can install this one from `https://github.com/tiktok/effect-house-agent-plugins`
-(the plugin is `plugins/ehai`), for example in a terminal:
+Other agents: an agent that installs Claude Code plugins from a GitHub folder can
+install this one from its folder in this repository, for example in a terminal:
 
 ```bash
-agy plugin install https://github.com/tiktok/effect-house-agent-plugins
+agy plugin install https://github.com/tiktok/effect-house-agent-plugins/tree/main/plugins/ehai
 ```
 
 Then start a new conversation; the first one sets the plugin up (about 600 MB,
