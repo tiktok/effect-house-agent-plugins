@@ -46,6 +46,17 @@ Then run the setup in the installed folder, `sh scripts/setup.sh` (on Windows
 says `READY`, and start a new conversation (in Codex a new task). In Claude Code,
 turn on auto-update for the `effect-house` marketplace under `/plugin`, Marketplaces.
 
+Other agents: an agent that installs Claude Code plugins from a GitHub repository
+can install this one from `https://github.com/tiktok/effect-house-agent-plugins`
+(the plugin is `plugins/ehai`), for example in a terminal:
+
+```bash
+agy plugin install https://github.com/tiktok/effect-house-agent-plugins
+```
+
+Then start a new conversation; the first one sets the plugin up (about 600 MB,
+once). To update, run the same command again.
+
 ## Sign in
 
 The first time you use the plugin, the agent shows a QR code in the chat. In the
@@ -95,8 +106,9 @@ usage analytics (`EHAI_TELEMETRY=off`) or the update check (`EHAI_UPDATE_CHECK=o
 
 `~/.ehai/runtime/current/bin/ehai uninstall` (`ehai.cmd` on Windows) prints what it
 would stop and delete; add `--yes` to do it, and `--remove-login` to sign out
-too. Then remove the plugin with `claude plugin uninstall ehai@effect-house` or
-`codex plugin remove ehai@effect-house`. Your project folders are never touched.
+too. Then remove the plugin with `claude plugin uninstall ehai@effect-house`,
+`codex plugin remove ehai@effect-house`, or your agent's own command (for example
+`agy plugin uninstall ehai`). Your project folders are never touched.
 
 ## Troubleshooting
 
