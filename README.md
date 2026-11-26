@@ -32,6 +32,12 @@ Claude Code:
 Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/claude_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then fork this session and continue there if supported. If you cannot run commands on my computer (you are Claude or another assistant on a chat page, not Claude Code), install nothing: tell me to paste this prompt into Claude Code on my Mac or Windows PC.
 ```
 
+Other agents:
+
+```text
+Fetch https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/main/agent_install_update.md directly with curl, not web search. Follow it to install/update and set up EffectHouse AI, then tell me to start a new conversation. If you cannot run commands on my computer, install nothing: tell me to paste this prompt into my coding agent on my Mac or Windows PC.
+```
+
 By hand, add the marketplace and install the plugin:
 
 ```bash
@@ -46,15 +52,9 @@ Then run the setup in the installed folder, `sh scripts/setup.sh` (on Windows
 says `READY`, and start a new conversation (in Codex a new task). In Claude Code,
 turn on auto-update for the `effect-house` marketplace under `/plugin`, Marketplaces.
 
-Other agents: an agent that installs Claude Code plugins from a GitHub folder can
-install this one from its folder in this repository, for example in a terminal:
-
-```bash
-agy plugin install https://github.com/tiktok/effect-house-agent-plugins/tree/main/plugins/ehai
-```
-
-Then start a new conversation; the first one sets the plugin up (about 600 MB,
-once). To update, run the same command again.
+In another agent, install the folder `plugins/ehai` (not the repository root) with
+its plugin command, for example
+`agy plugin install https://github.com/tiktok/effect-house-agent-plugins/tree/main/plugins/ehai`.
 
 ## Sign in
 
