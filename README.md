@@ -53,8 +53,11 @@ says `READY`, and start a new conversation (in Codex a new task). In Claude Code
 turn on auto-update for the `effect-house` marketplace under `/plugin`, Marketplaces.
 
 In another agent, install the folder `plugins/ehai` (not the repository root) with
-its plugin command, for example
-`agy plugin install https://github.com/tiktok/effect-house-agent-plugins/tree/main/plugins/ehai`.
+its plugin command. For example, in Antigravity:
+
+```bash
+agy plugin install https://github.com/tiktok/effect-house-agent-plugins/tree/main/plugins/ehai
+```
 
 ## Sign in
 
@@ -106,7 +109,7 @@ usage analytics (`EHAI_TELEMETRY=off`) or the update check (`EHAI_UPDATE_CHECK=o
 `~/.ehai/runtime/current/bin/ehai uninstall` (`ehai.cmd` on Windows) prints what it
 would stop and delete; add `--yes` to do it, and `--remove-login` to sign out
 too. Then remove the plugin with `claude plugin uninstall ehai@effect-house`,
-`codex plugin remove ehai@effect-house`, or your agent's own command (for example
+`codex plugin remove ehai@effect-house`, or your agent's own command (in Antigravity
 `agy plugin uninstall ehai`). Your project folders are never touched.
 
 ## Troubleshooting
