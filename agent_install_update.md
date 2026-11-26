@@ -51,6 +51,20 @@ the marketplace files and installs as a plugin with no tools.
 
 Require successful exit codes, and report a failing command's error as it is.
 
+Verify the release. Read the current commit of `main` with Git, not a web search
+or a cached page:
+
+```sh
+git ls-remote https://github.com/tiktok/effect-house-agent-plugins.git refs/heads/main
+```
+
+Take `<mainSha>` from the `refs/heads/main` line and read the release manifest
+`<mainSha>:plugins/ehai/.claude-plugin/plugin.json` at that commit, from
+`https://raw.githubusercontent.com/tiktok/effect-house-agent-plugins/<mainSha>/plugins/ehai/.claude-plugin/plugin.json`.
+Its `version` must equal the version of `<installPath>/.claude-plugin/plugin.json`.
+If they differ, install once more and compare again; if they still differ, report
+both versions and stop. Do not hardcode a release number.
+
 ## 2. Complete setup
 
 Use the exact `<installPath>` from step 1 and quote it for the native shell. The
